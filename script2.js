@@ -72,11 +72,36 @@ buttons.forEach(button => {
 
         const page = button.dataset.page;
 
+        toggleDashboardMenu(true);
         loadPage(page);
 
     });
 
 });
+
+function toggleDashboardMenu(forceOpen) {
+    const sidebar = document.getElementById("dashboardSidebar");
+    const toggleBtn = document.getElementById("dashboardToggle");
+
+    if (!sidebar || !toggleBtn) return;
+
+    const shouldOpen = typeof forceOpen === "boolean"
+        ? forceOpen
+        : !sidebar.classList.contains("open");
+
+    sidebar.classList.toggle("open", shouldOpen);
+    toggleBtn.classList.toggle("active", shouldOpen);
+}
+
+function closeDashboardMenu() {
+    const sidebar = document.getElementById("dashboardSidebar");
+    const toggleBtn = document.getElementById("dashboardToggle");
+
+    if (!sidebar || !toggleBtn) return;
+
+    sidebar.classList.remove("open");
+    toggleBtn.classList.remove("active");
+}
 
 function openDashboard(page) {
     const btn = document.querySelector(`.menu-btn[data-page="${page}"]`);
@@ -114,6 +139,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const unlockButton = document.getElementById("unlockBtn");
     const passwordInput = document.getElementById("passwordInput");
     const passwordMessage = document.getElementById("passwordMessage");
+    const dashboardToggle = document.getElementById("dashboardToggle");
 
     if (unlockButton) {
         unlockButton.addEventListener("click", () => {
@@ -135,6 +161,34 @@ window.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
+
+    if (dashboardToggle) {
+        dashboardToggle.addEventListener("click", () => {
+            toggleDashboardMenu();
+        });
+    }
+
+    document.addEventListener("click", (event) => {
+        const sidebar = document.getElementById("dashboardSidebar");
+        const toggle = document.getElementById("dashboardToggle");
+
+        if (!sidebar || !toggle) return;
+
+        if (
+            window.innerWidth <= 900 &&
+            sidebar.classList.contains("open") &&
+            !sidebar.contains(event.target) &&
+            !toggle.contains(event.target)
+        ) {
+            closeDashboardMenu();
+        }
+    });
+
+    window.addEventListener("resize", () => {
+        if (window.innerWidth > 900) {
+            closeDashboardMenu();
+        }
+    });
 
 });
 function loadPage(page) {
