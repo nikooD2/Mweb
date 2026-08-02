@@ -1,4 +1,36 @@
 ﻿/*=====================================
+    PASSWORD PROTECTION
+=====================================*/
+
+function showProtectedContent() {
+    const overlay = document.getElementById("passwordOverlay");
+    const mainContent = document.getElementById("mainContent");
+
+    if (overlay) {
+        overlay.style.display = "none";
+    }
+
+    if (mainContent) {
+        mainContent.classList.remove("hidden");
+    }
+}
+
+function openProtectedPage(event, targetPage) {
+    event.preventDefault();
+
+    const correctPassword = "1234";
+    const enteredPassword = prompt("لطفاً رمز عبور را وارد کنید:");
+
+    if (enteredPassword === correctPassword) {
+        showProtectedContent();
+        return true;
+    }
+
+    alert("رمز عبور اشتباه است.");
+    return false;
+}
+
+/*=====================================
     NAVBAR SCROLL
 =====================================*/
 
@@ -74,7 +106,35 @@ function openDashboard(page) {
 =====================================*/
 window.addEventListener("DOMContentLoaded", () => {
 
-    document.querySelector('.menu-btn[data-page="home"]').click();
+    const homeButton = document.querySelector('.menu-btn[data-page="home"]');
+    if (homeButton) {
+        homeButton.click();
+    }
+
+    const unlockButton = document.getElementById("unlockBtn");
+    const passwordInput = document.getElementById("passwordInput");
+    const passwordMessage = document.getElementById("passwordMessage");
+
+    if (unlockButton) {
+        unlockButton.addEventListener("click", () => {
+            if (passwordInput.value === "1234") {
+                showProtectedContent();
+            } else {
+                if (passwordMessage) {
+                    passwordMessage.textContent = "رمز عبور اشتباه است.";
+                }
+            }
+        });
+    }
+
+    if (passwordInput) {
+        passwordInput.addEventListener("keydown", (event) => {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                unlockButton?.click();
+            }
+        });
+    }
 
 });
 function loadPage(page) {
