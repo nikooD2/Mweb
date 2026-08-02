@@ -1,0 +1,494 @@
+﻿<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>سامانه آرشیو سوالات</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style2.css">
+
+</head>
+
+<body>
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero">
+
+        <!-- Navbar -->
+
+        <header id="navbar">
+
+            <div class="nav-top">
+
+                <div class="logo">
+
+                    <img src="pics/logo.png" alt="logo">
+
+                </div>
+
+                <div class="nav-icons">
+
+                    <!--<a href="#"><i class="fa-solid fa-house"></i></a>-->
+                    <!--<div class="search-small">
+
+                        <input type="text" placeholder="جستجو...">
+
+                        <i class="fa fa-search"></i>
+
+                    </div>-->
+                    <!--<button class="ask-btn">
+
+                        پرسش سوال
+
+                    </button>-->
+
+                    <select>
+
+                        <option>FA</option>
+                        <option>EN</option>
+                        <option>AR</option>
+
+                    </select>
+
+                    <a href="#"><i class="fa-regular fa-envelope"></i></a>
+
+                    <a href="#"><i class="fa-regular fa-bell"></i></a>
+
+                    <a href="#"><i class="fa-regular fa-user"></i></a>
+
+                </div>
+
+            </div>
+
+            <!-- Categories -->
+
+            <div class="nav-bottom">
+
+                <a href="#">اعتقادات</a>
+
+                <a href="#">قرآن</a>
+
+                <a href="#">حدیث</a>
+
+                <!--  <a href="#">فقه</a>-->
+
+                <a href="#">تاریخ</a>
+
+                <!--<a href="#">اخلاق</a>
+
+                <a href="#">خانواده</a>
+
+                <a href="#">پزشکی</a>
+
+                <a href="#">ادیان</a>
+
+                <a href="#">پاسخ به شبهات</a>
+
+                <a href="#">سبک زندگی</a>
+
+                <a href="#">فلسفه</a>-->
+
+            </div>
+
+        </header>
+
+        <!-- Hero -->
+
+        <div class="hero-content">
+
+            <h1>
+                پاسخ به شبهات مذهبی
+            </h1>
+
+            <p>
+                جستجو در هزاران سوال، پاسخ و منبع معتبر
+            </p>
+
+            <div class="hero-search">
+
+                <input type="text"
+                       placeholder="سوال یا موضوع مورد نظر را وارد کنید...">
+
+                <button>
+                    جستجو
+                </button>
+
+            </div>
+
+            <div class="hero-links">
+
+                <a href="index2.html" onclick="return openProtectedPage(event, 'index2.html')">
+                    جستجوی پیشرفته
+                </a>
+
+                <a href="#" onclick="openDashboard('ai')">
+                    هوش مصنوعی
+                </a>
+
+                <a href="#" onclick="openDashboard('new')">
+                    ارسال شبهه جدید
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main-layout" id="dashboard">
+
+        <!-- Right Sidebar -->
+
+        <aside class="dashboard">
+
+            <!--<h3>
+
+                داشبورد
+
+            </h3>-->
+
+            <button class="menu-btn active" data-page="home">
+
+                <i class="fa-solid fa-house"></i>
+
+                خانه
+
+            </button>
+
+            <button class="menu-btn" data-page="search">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                جستجو
+
+            </button>
+
+            <button class="menu-btn"
+                    id="advanced-search"
+                    data-page="advanced">
+
+                <i class="fa-solid fa-sliders"></i>
+
+                جستجوی پیشرفته
+
+            </button>
+
+            <button class="menu-btn"
+                    id="ai-search"
+                    data-page="ai">
+
+                <i class="fa-solid fa-robot"></i>
+
+                هوش مصنوعی
+
+            </button>
+
+            <button class="menu-btn"
+                    data-page="new">
+
+                <i class="fa-solid fa-circle-plus"></i>
+
+                ارسال شبهه جدید
+
+            </button>
+
+            <button class="menu-btn" data-page="about">
+
+                <i class="fa-solid fa-circle-info"></i>
+
+                آشنایی با سایت
+
+            </button>
+
+            <button class="menu-btn" data-page="library">
+
+                <i class="fa-solid fa-book-open"></i>
+
+                مرور منابع
+
+            </button>
+
+            <!--<button class="menu-btn" data-page="people">
+
+                <i class="fa-solid fa-users"></i>
+
+                معرفی کارشناسان
+
+            </button>-->
+
+        </aside>
+
+        <!-- Center -->
+
+        <section class="content-area">
+
+            <div id="dynamic-content">
+
+                <h2>
+
+                    خانه
+
+                </h2>
+
+                <p>
+
+                    این قسمت با انتخاب گزینه‌های داشبورد تغییر خواهد کرد.
+
+                </p>
+
+            </div>
+
+        </section>
+
+        <!-- Left Sidebar -->
+
+        <aside class="left-panel">
+
+            <div class="box">
+
+                <h3>
+
+                    سوالات روز
+
+                </h3>
+
+                <ul>
+
+                    <li>قمه زدن در عزاداری اباعبدالله</li>
+
+                    <li>در کتب تاریخی اشاره ای به دختری به نام رقیه برای امام حسین علیه السلام نشده است</li>
+
+                    <li>....</li>
+
+                    <li>...</li>
+
+                    <li>...</li>
+
+                    <li>...</li>
+
+                </ul>
+
+            </div>
+
+            <div class="box">
+
+                <h3>
+
+                    مناسبت های پیش رو
+
+                </h3>
+
+                <ul>
+
+                    <li>پیاده روی اربعین</li>
+
+                    <li>پیامبر اکرم، شهادت یا رحلت؟</li>
+
+                    <li>علت سکوت امیرالمومنین بعد از شهادت رسول خاتم</li>
+
+                    <li>...</li>
+
+                </ul>
+
+            </div>
+
+        </aside>
+
+    </main>
+
+    <!-- ================= ABOUT ================= -->
+
+    <section class="about-site">
+
+        <h2>مصباح</h2>
+
+        <p>
+
+            سامانه آرشیو پاسخ به شبهات بستری برای جستجوی سریع، دسترسی به پاسخ‌های
+            معتبر و ثبت سوالات جدید است.
+
+        </p>
+
+        <div class="about-grid">
+
+            <div class="about-card">
+
+                <i class="fa-solid fa-database"></i>
+
+                <h3>000</h3>
+
+                <p>شبهه آرشیوشده</p>
+
+            </div>
+
+            <div class="about-card">
+
+                <i class="fa-solid fa-users"></i>
+
+                <h3>000</h3>
+
+                <p>کاربر مشترک</p>
+
+            </div>
+
+            <!--<div class="about-card">
+
+                <i class="fa-solid fa-book"></i>
+
+                <h3>۱۲٬۰۰۰</h3>
+
+                <p>منبع علمی</p>
+
+            </div>-->
+
+            <div class="about-card">
+
+                <i class="fa-solid fa-clock"></i>
+
+                <h3>صرفه‌جویی در زمان</h3>
+
+                <p>دسترسی سریع به پاسخ‌ها</p>
+
+            </div>
+
+            <div class="about-card">
+
+                <i class="fa-solid fa-shield"></i>
+
+                <h3>پاسخ معتبر</h3>
+
+                <p>استناد به منابع علمی</p>
+
+            </div>
+
+            <div class="about-card">
+
+                <i class="fa-solid fa-robot"></i>
+
+                <h3>هوش مصنوعی</h3>
+
+                <p>جستجوی هوشمند</p>
+
+            </div>
+
+            <div class="about-card">
+
+                <i class="fa-solid fa-layer-group"></i>
+
+                <h3>دسته‌بندی کامل</h3>
+
+                <p>دسترسی آسان به موضوعات</p>
+
+            </div>
+
+            <div class="about-card">
+
+                <i class="fa-solid fa-paper-plane"></i>
+
+                <h3>ثبت شبهه</h3>
+
+                <p>ارسال سوال در صورت نبود پاسخ</p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ================= EXPERTS ================= -->
+    <!--<section class="experts">
+
+        <h2>
+
+            کارشناسان
+
+        </h2>
+
+        <div class="expert-grid">
+
+            <div class="expert-card">
+
+                <div class="avatar"></div>
+
+                <h3>کارشناس اول</h3>
+
+                <p>فقه و احکام</p>
+
+            </div>
+
+            <div class="expert-card">
+
+                <div class="avatar"></div>
+
+                <h3>کارشناس دوم</h3>
+
+                <p>قرآن و حدیث</p>
+
+            </div>
+
+            <div class="expert-card">
+
+                <div class="avatar"></div>
+
+                <h3>کارشناس سوم</h3>
+
+                <p>تاریخ اسلام</p>
+
+            </div>
+
+            <div class="expert-card">
+
+                <div class="avatar"></div>
+
+                <h3>کارشناس چهارم</h3>
+
+                <p>پاسخ به شبهات</p>
+
+            </div>
+
+        </div>
+
+    </section>-->
+    <!-- Footer -->
+
+    <footer class="footer">
+
+        <div>
+            <h3>ارتباط با ما</h3>
+            <p>ایمیل</p>
+            <p>شماره تماس</p>
+            <p>آدرس</p>
+        </div>
+
+        <div>
+            <h3>درباره سامانه</h3>
+            <p>قوانین</p>
+            <p>حریم خصوصی</p>
+            <p>سوالات متداول</p>
+        </div>
+
+        <p class="copyright">
+            © 2026 تمامی حقوق این وب‌سایت محفوظ است.
+            استفاده از مطالب تنها با ذکر منبع مجاز است.
+        </p>
+
+    </footer>
+
+    <!-- JS -->
+
+    <script src="script2.js"></script>
+
+</body>
+
+</html>
