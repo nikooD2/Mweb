@@ -33,128 +33,270 @@
 
     <!-- ================= HERO ================= -->
 
-    <section class="hero">
+<section class="hero">
 
-        <!-- Navbar -->
+    <!-- ================= DESKTOP NAVBAR ================= -->
 
-        <header id="navbar">
+    <header id="navbar">
 
-            <div class="nav-top">
+        <div class="nav-top">
 
-                <div class="logo">
-
-                    <img src="pics/logo.png" alt="logo">
-
-                </div>
-
-                <div class="nav-icons">
-
-                    <!--<a href="#"><i class="fa-solid fa-house"></i></a>-->
-                    <!--<div class="search-small">
-
-                        <input type="text" placeholder="جستجو...">
-
-                        <i class="fa fa-search"></i>
-
-                    </div>-->
-                    <!--<button class="ask-btn">
-
-                        پرسش سوال
-
-                    </button>-->
-
-                    <select>
-
-                        <option>FA</option>
-                        <option>EN</option>
-                        <option>AR</option>
-
-                    </select>
-
-                    <a href="#"><i class="fa-regular fa-envelope"></i></a>
-
-                    <a href="#"><i class="fa-regular fa-bell"></i></a>
-
-                    <a href="#"><i class="fa-regular fa-user"></i></a>
-
-                </div>
-
+            <div class="logo">
+                <img src="pics/logo.png" alt="logo">
             </div>
 
-            <!-- Categories -->
+            <div class="nav-icons">
 
-            <div class="nav-bottom">
+                <select>
+                    <option>FA</option>
+                    <option>EN</option>
+                    <option>AR</option>
+                </select>
 
-                <a href="#">اعتقادات</a>
-
-                <a href="#">قرآن</a>
-
-                <a href="#">حدیث</a>
-
-                <!--  <a href="#">فقه</a>-->
-
-                <a href="#">تاریخ</a>
-
-                <!--<a href="#">اخلاق</a>
-
-                <a href="#">خانواده</a>
-
-                <a href="#">پزشکی</a>
-
-                <a href="#">ادیان</a>
-
-                <a href="#">پاسخ به شبهات</a>
-
-                <a href="#">سبک زندگی</a>
-
-                <a href="#">فلسفه</a>-->
-
-            </div>
-
-        </header>
-
-        <!-- Hero -->
-
-        <div class="hero-content">
-
-            <h1>
-                پاسخ به شبهات مذهبی
-            </h1>
-
-            <p>
-                جستجو در هزاران سوال، پاسخ و منبع معتبر
-            </p>
-
-            <div class="hero-search">
-
-                <input type="text"
-                       placeholder="سوال یا موضوع مورد نظر را وارد کنید...">
-
-                <button>
-                    جستجو
-                </button>
-
-            </div>
-
-            <div class="hero-links">
-
-                <a href="#" onclick="openDashboard('advanced')">
-                    جستجوی پیشرفته
+                <a href="#">
+                    <i class="fa-regular fa-envelope"></i>
                 </a>
 
-                <a href="#" onclick="openDashboard('ai')">
-                    هوش مصنوعی
+                <a href="#">
+                    <i class="fa-regular fa-bell"></i>
                 </a>
 
-                <a href="#" onclick="openDashboard('new')">
-                    ارسال شبهه جدید
+                <a href="#">
+                    <i class="fa-regular fa-user"></i>
                 </a>
 
             </div>
 
         </div>
 
-    </section>
+        <div class="nav-bottom">
+
+            <a href="#">اعتقادات</a>
+            <a href="#">قرآن</a>
+            <a href="#">حدیث</a>
+            <a href="#">تاریخ</a>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= DESKTOP HERO CONTENT ================= -->
+
+    <div class="hero-content">
+
+        <h1>
+            پاسخ به شبهات مذهبی
+        </h1>
+
+        <p>
+            جستجو در هزاران سوال، پاسخ و منبع معتبر
+        </p>
+
+        <div class="hero-search">
+
+            <input
+                type="text"
+                placeholder="سوال یا موضوع مورد نظر را وارد کنید..."
+            >
+
+            <button>
+                جستجو
+            </button>
+
+        </div>
+
+        <div class="hero-links">
+
+            <a href="#" onclick="openDashboard('advanced')">
+                جستجوی پیشرفته
+            </a>
+
+            <a href="#" onclick="openDashboard('ai')">
+                هوش مصنوعی
+            </a>
+
+            <a href="#" onclick="openDashboard('new')">
+                ارسال شبهه جدید
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- ================= MOBILE HERO ================= -->
+
+    <div class="mobile-hero">
+
+        <!-- MENU - LEFT -->
+        <button
+            class="mobile-menu-button"
+            id="mobileMenuToggle"
+            type="button"
+            aria-label="منو"
+        >
+            ≡
+        </button>
+
+
+        <!-- LANGUAGE -->
+        <select
+            class="mobile-language"
+            aria-label="زبان"
+        >
+            <option>FA</option>
+            <option>EN</option>
+            <option>AR</option>
+        </select>
+
+
+        <!-- LOGO - CENTER -->
+        <div class="mobile-hero-logo">
+
+            <img
+                src="pics/logo.png"
+                alt="logo"
+            >
+
+        </div>
+
+
+        <!-- SEARCH - RIGHT -->
+        <button
+            class="mobile-hero-search"
+            id="mobileSearchBtn"
+            type="button"
+            aria-label="جستجو"
+        >
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+
+
+    </div>
+
+
+    <!-- ================= MOBILE MENU ================= -->
+
+    <div
+        class="mobile-menu"
+        id="mobileMenu"
+    >
+
+        <!-- <div class="mobile-menu-header">
+
+            <span>منو</span>
+
+            <button
+                id="mobileMenuClose"
+                type="button"
+            >
+                ×
+            </button>
+
+        </div> -->
+
+
+        <div class="mobile-menu-items">
+            <div class="mobile-top-icons">
+
+                <a href="#">
+                    <i class="fa-regular fa-user"></i>
+                </a>
+
+                <a href="#">
+                    <i class="fa-regular fa-bell"></i>
+                </a>
+
+                
+                <a href="#">
+                    <i class="fa-regular fa-envelope"></i>
+                </a>
+
+            </div>
+            <button
+                class="mobile-menu-btn"
+                data-page="mobile-home"
+            >
+                <i class="fa-solid fa-house"></i>
+                <span>خانه</span>
+            </button>
+
+            <button
+                class="mobile-menu-btn"
+                data-page="search"
+            >
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <span>جستجو</span>
+            </button>
+
+            <button
+                class="mobile-menu-btn"
+                data-page="advanced"
+            >
+                <i class="fa-solid fa-sliders"></i>
+                <span>جستجوی پیشرفته</span>
+            </button>
+
+            <button
+                class="mobile-menu-btn"
+                data-page="ai"
+            >
+                <i class="fa-solid fa-robot"></i>
+                <span>هوش مصنوعی</span>
+            </button>
+
+            <button
+                class="mobile-menu-btn"
+                data-page="new"
+            >
+                <i class="fa-solid fa-circle-plus"></i>
+                <span>ارسال شبهه جدید</span>
+            </button>
+
+            <button
+                class="mobile-menu-btn"
+                data-page="about"
+            >
+                <i class="fa-solid fa-circle-info"></i>
+                <span>آشنایی با سایت</span>
+            </button>
+
+            <button
+                class="mobile-menu-btn"
+                data-page="library"
+            >
+                <i class="fa-solid fa-book-open"></i>
+                <span>مرور منابع</span>
+            </button>
+            
+            <button
+                class="mobile-menu-btn"
+                data-page="trend"
+            >
+                <i class="fa-solid fa-circle-question"></i>
+                <span>سوالات روز</span>
+            </button>
+
+            <button
+                class="mobile-menu-btn"
+                data-page="upcoming"
+            >
+                <i class="fa-solid fa-calendar-days"></i>
+                <span>مناسبات پیش رو</span>
+
+            </button> 
+        </div>
+
+    </div>
+
+
+    <div
+        class="mobile-menu-overlay"
+        id="mobileMenuOverlay"
+    ></div>
+
+</section>
+
 
     <!-- ================= MAIN ================= -->
 
@@ -162,15 +304,7 @@
 
         <!-- Right Sidebar -->
 
-        <div class="dashboard-shell">
-
-            <button class="dashboard-toggle" id="dashboardToggle" type="button" aria-label="باز کردن منوی داشبورد">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-
-            <aside class="dashboard" id="dashboardSidebar">
+        <aside class="dashboard">
 
             <!--<h3>
 
@@ -178,7 +312,7 @@
 
             </h3>-->
 
-            <button class="menu-btn active" data-page="home">
+            <button class="menu-btn" data-page="home">
 
                 <i class="fa-solid fa-house"></i>
 
@@ -247,9 +381,7 @@
 
             </button>-->
 
-            </aside>
-
-        </div>
+        </aside>
 
         <!-- Center -->
 
@@ -427,61 +559,7 @@
         </div>
 
     </section>
-
-    <!-- ================= EXPERTS ================= -->
-    <!--<section class="experts">
-
-        <h2>
-
-            کارشناسان
-
-        </h2>
-
-        <div class="expert-grid">
-
-            <div class="expert-card">
-
-                <div class="avatar"></div>
-
-                <h3>کارشناس اول</h3>
-
-                <p>فقه و احکام</p>
-
-            </div>
-
-            <div class="expert-card">
-
-                <div class="avatar"></div>
-
-                <h3>کارشناس دوم</h3>
-
-                <p>قرآن و حدیث</p>
-
-            </div>
-
-            <div class="expert-card">
-
-                <div class="avatar"></div>
-
-                <h3>کارشناس سوم</h3>
-
-                <p>تاریخ اسلام</p>
-
-            </div>
-
-            <div class="expert-card">
-
-                <div class="avatar"></div>
-
-                <h3>کارشناس چهارم</h3>
-
-                <p>پاسخ به شبهات</p>
-
-            </div>
-
-        </div>
-
-    </section>-->
+    
     <!-- Footer -->
 
     <footer class="footer">

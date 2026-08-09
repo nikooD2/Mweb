@@ -30,25 +30,55 @@ function openProtectedPage(event, targetPage) {
     return false;
 }
 
+
 /*=====================================
-    NAVBAR SCROLL
+    GLOBAL ELEMENTS
 =====================================*/
 
 const navbar = document.getElementById("navbar");
+const content = document.getElementById("dynamic-content");
+
+
+/*=====================================
+    NAVBAR + BACK TO TOP SCROLL
+=====================================*/
+
+const topButton = document.createElement("button");
+
+topButton.innerHTML = "↑";
+topButton.className = "back-top";
+topButton.setAttribute("aria-label", "بازگشت به بالا");
+
+document.body.appendChild(topButton);
 
 window.addEventListener("scroll", () => {
 
-    if (window.scrollY > 120) {
+    /* Navbar */
 
-        navbar.classList.add("active");
-
+    if (navbar) {
+        navbar.classList.toggle(
+            "active",
+            window.scrollY > 120
+        );
     }
 
-    else {
 
-        navbar.classList.remove("active");
+    /* Back To Top */
 
-    }
+    topButton.classList.toggle(
+        "show",
+        window.scrollY > 500
+    );
+
+});
+
+
+topButton.addEventListener("click", () => {
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 
 });
 
@@ -57,140 +87,125 @@ window.addEventListener("scroll", () => {
     DASHBOARD MENU
 =====================================*/
 
-const buttons = document.querySelectorAll(".menu-btn");
+const desktopMenuButtons =
+    document.querySelectorAll(".menu-btn");
 
-const content = document.getElementById("dynamic-content");
+const mobileMenuButtons =
+    document.querySelectorAll(".mobile-menu-btn");
 
 
-buttons.forEach(button => {
+function activateMenuButton(button) {
+
+    if (!button) return;
+
+    const page = button.dataset.page;
+
+    /*
+        Active فقط برای منوی مربوطه
+    */
+
+    desktopMenuButtons.forEach(btn => {
+        btn.classList.toggle(
+            "active",
+            btn.dataset.page === page
+        );
+    });
+
+    mobileMenuButtons.forEach(btn => {
+        btn.classList.toggle(
+            "active",
+            btn.dataset.page === page
+        );
+    });
+
+    loadPage(page);
+}
+
+
+/*
+    Desktop menu
+*/
+
+desktopMenuButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+        activateMenuButton(button);
+    });
+
+});
+
+
+/*
+    Mobile menu
+*/
+
+mobileMenuButtons.forEach(button => {
 
     button.addEventListener("click", () => {
 
-        buttons.forEach(btn => btn.classList.remove("active"));
+        activateMenuButton(button);
 
-        button.classList.add("active");
-
-        const page = button.dataset.page;
-
-        toggleDashboardMenu(true);
-        loadPage(page);
+        closeMobileMenu();
 
     });
 
 });
 
-function toggleDashboardMenu(forceOpen) {
-    const sidebar = document.getElementById("dashboardSidebar");
-    const toggleBtn = document.getElementById("dashboardToggle");
 
-    if (!sidebar || !toggleBtn) return;
-
-    const shouldOpen = typeof forceOpen === "boolean"
-        ? forceOpen
-        : !sidebar.classList.contains("open");
-
-    sidebar.classList.toggle("open", shouldOpen);
-    toggleBtn.classList.toggle("active", shouldOpen);
-}
-
-function closeDashboardMenu() {
-    const sidebar = document.getElementById("dashboardSidebar");
-    const toggleBtn = document.getElementById("dashboardToggle");
-
-    if (!sidebar || !toggleBtn) return;
-
-    sidebar.classList.remove("open");
-    toggleBtn.classList.remove("active");
-}
+/*=====================================
+    OPEN DASHBOARD
+=====================================*/
 
 function openDashboard(page) {
-    const btn = document.querySelector(`.menu-btn[data-page="${page}"]`);
 
-    if (btn) {
-        btn.click();
+    const button = document.querySelector(
+        `.menu-btn[data-page="${page}"],
+         .mobile-menu-btn[data-page="${page}"]`
+    );
+
+    if (button) {
+        activateMenuButton(button);
     }
 
-    const dashboard = document.getElementById("dashboard");
+
+    /*
+        در موبایل اسکرول داشبورد انجام نشود
+    */
+
+    if (window.innerWidth <= 600) {
+        return;
+    }
+
+
+    const dashboard =
+        document.getElementById("dashboard");
+
     if (!dashboard) return;
 
-    const headerHeight = navbar ? navbar.offsetHeight : 0;
+
+    const headerHeight =
+        navbar ? navbar.offsetHeight : 0;
+
+
     const top =
         dashboard.getBoundingClientRect().top +
         window.pageYOffset -
         headerHeight -
         20;
 
+
     window.scrollTo({
         top: Math.max(0, top),
         behavior: "smooth"
     });
+
 }
+
 
 /*=====================================
     LOAD PAGE
 =====================================*/
-window.addEventListener("DOMContentLoaded", () => {
 
-    const homeButton = document.querySelector('.menu-btn[data-page="home"]');
-    if (homeButton) {
-        homeButton.click();
-    }
-
-    const unlockButton = document.getElementById("unlockBtn");
-    const passwordInput = document.getElementById("passwordInput");
-    const passwordMessage = document.getElementById("passwordMessage");
-    const dashboardToggle = document.getElementById("dashboardToggle");
-
-    if (unlockButton) {
-        unlockButton.addEventListener("click", () => {
-            if (passwordInput.value === "1234") {
-                showProtectedContent();
-            } else {
-                if (passwordMessage) {
-                    passwordMessage.textContent = "رمز عبور اشتباه است.";
-                }
-            }
-        });
-    }
-
-    if (passwordInput) {
-        passwordInput.addEventListener("keydown", (event) => {
-            if (event.key === "Enter") {
-                event.preventDefault();
-                unlockButton?.click();
-            }
-        });
-    }
-
-    if (dashboardToggle) {
-        dashboardToggle.addEventListener("click", () => {
-            toggleDashboardMenu();
-        });
-    }
-
-    document.addEventListener("click", (event) => {
-        const sidebar = document.getElementById("dashboardSidebar");
-        const toggle = document.getElementById("dashboardToggle");
-
-        if (!sidebar || !toggle) return;
-
-        if (
-            window.innerWidth <= 900 &&
-            sidebar.classList.contains("open") &&
-            !sidebar.contains(event.target) &&
-            !toggle.contains(event.target)
-        ) {
-            closeDashboardMenu();
-        }
-    });
-
-    window.addEventListener("resize", () => {
-        if (window.innerWidth > 900) {
-            closeDashboardMenu();
-        }
-    });
-
-});
 function loadPage(page) {
 
     switch (page) {
@@ -280,6 +295,57 @@ function loadPage(page) {
 
         /*=============================*/
 
+        case "mobile-home":
+
+            content.innerHTML = `
+
+            <div class="mobile-home">
+
+                <h1>
+                    پاسخ به شبهات مذهبی
+                </h1>
+
+                <p>
+                    جستجو در هزاران سوال، پاسخ و منبع معتبر
+                </p>
+
+                <div class="hero-search">
+
+                    <input
+                        type="text"
+                        placeholder="سوال یا موضوع مورد نظر را وارد کنید..."
+                    >
+
+                    <button>
+                        جستجو
+                    </button>
+
+                </div>
+
+                <div class="hero-links">
+
+                    <a href="#" onclick="openDashboard('advanced')">
+                        جستجوی پیشرفته
+                    </a>
+
+                    <a href="#" onclick="openDashboard('ai')">
+                        هوش مصنوعی
+                    </a>
+
+                    <a href="#" onclick="openDashboard('new')">
+                        ارسال شبهه جدید
+                    </a>
+
+                </div>
+
+            </div>
+
+`;
+
+            break;
+
+
+        /*=============================*/
         case "search":
 
             content.innerHTML = `
@@ -441,8 +507,6 @@ function loadPage(page) {
 `;
 
             setTimeout(initAIPage, 0);
-
-            break;
 
             break;
 
@@ -689,7 +753,7 @@ function loadPage(page) {
 
 <h3>
 
-درباره سازمان
+درباره ما
 
 </h3>
 
@@ -837,343 +901,298 @@ function loadPage(page) {
 `;
 
             break;
+            
 
-
-        /*=============================*/
-
-        case "people":
+        case "trend":
 
             content.innerHTML = `
 
 <h2>
 
-معرفی کارشناسان
+سوالات روز
 
 </h2>
 
+<div class="cards">
 
-<div class="expert-grid">
 
-
-<div class="expert-card">
-
-<div class="avatar"></div>
+<div class="card">
 
 <h3>
-
-دکتر احمدی
-
+دختری به نام رقیه
 </h3>
 
 <p>
-
-متخصص علوم اسلامی
-
+در کتب تاریخی اشاره ای به دختری به نام رقیه برای امام حسین علیه السلام نشده است
 </p>
 
 </div>
 
-
-
-<div class="expert-card">
-
-<div class="avatar"></div>
+<div class="card">
 
 <h3>
 
-استاد رضایی
+قمه زنی سنت است یا بدعت
 
 </h3>
 
 <p>
-
-متخصص تاریخ
-
+...
 </p>
-
-</div>
-
-
-
-<div class="expert-card">
-
-<div class="avatar"></div>
-
-<h3>
-
-دکتر محمدی
-
-</h3>
-
-<p>
-
-متخصص قرآن و حدیث
-
-</p>
-
-</div>
-
-
-</div>
-
 
 `;
 
             break;
 
 
+        /*=============================*/
+    
+        case "upcoming":
+
+            content.innerHTML = `
+
+<h2>
+
+مناسبات پیش رو
+
+</h2>
+
+<div class="cards">
+
+
+<div class="card">
+
+<h3>
+پیاده روی اربعین
+</h3>
+
+<p>
+از نظر ریاضی امکان رسیدن کاروان اسرا در روز اربعین به کربلا وجود دارد؟
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>
+پیامبر اکرم شهادت یا رحلت؟
+</h3>
+
+<p>
+...
+</p>
+
+`;
+
+            break;
+
+
+        /*=============================*/
     }
 
 }
+
+
+/*=====================================
+    INITIAL PAGE
+=====================================*/
+
+window.addEventListener("DOMContentLoaded", () => {
+
+    /*
+        دسکتاپ → home
+        موبایل → mobile-home
+    */
+
+    const isMobile = window.innerWidth <= 600;
+
+    const initialPage = isMobile
+        ? "mobile-home"
+        : "home";
+
+
+    const initialButton = document.querySelector(
+        isMobile
+            ? `.mobile-menu-btn[data-page="${initialPage}"]`
+            : `.menu-btn[data-page="${initialPage}"]`
+    );
+
+
+    if (initialButton) {
+        activateMenuButton(initialButton);
+    }
+
+
+    /* Password */
+
+    const unlockButton =
+        document.getElementById("unlockBtn");
+
+    const passwordInput =
+        document.getElementById("passwordInput");
+
+    const passwordMessage =
+        document.getElementById("passwordMessage");
+
+
+    if (unlockButton) {
+
+        unlockButton.addEventListener("click", () => {
+
+            if (
+                passwordInput &&
+                passwordInput.value === "1234"
+            ) {
+
+                showProtectedContent();
+
+            } else {
+
+                if (passwordMessage) {
+                    passwordMessage.textContent =
+                        "رمز عبور اشتباه است.";
+                }
+
+            }
+
+        });
+
+    }
+
+
+    if (passwordInput) {
+
+        passwordInput.addEventListener(
+            "keydown",
+            event => {
+
+                if (event.key === "Enter") {
+
+                    event.preventDefault();
+
+                    unlockButton?.click();
+
+                }
+
+            }
+        );
+
+    }
+
+});
 
 
 /*=====================================
     SCROLL ANIMATION
 =====================================*/
 
-
 const observer =
-    new IntersectionObserver(entries => {
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.style.opacity = "1";
+
+                    entry.target.style.transform =
+                        "translateY(0)";
+
+                    observer.unobserve(entry.target);
+
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.15
+        }
+    );
 
 
-        entries.forEach(entry => {
-
-
-            if (entry.isIntersecting) {
-
-                entry.target.style.opacity = "1";
-
-                entry.target.style.transform = "translateY(0)";
-
-            }
-
-
-        });
-
-
-    }, {
-
-        threshold: .15
-
-    });
-
-
-
-document.querySelectorAll(
-    ".card,.expert-card,.box"
-)
+document
+    .querySelectorAll(
+        ".card, .expert-card, .box"
+    )
     .forEach(item => {
-
 
         item.style.opacity = "0";
 
-        item.style.transform = "translateY(40px)";
+        item.style.transform =
+            "translateY(40px)";
 
-        item.style.transition = "all .6s ease";
-
+        item.style.transition =
+            "all .6s ease";
 
         observer.observe(item);
 
-
     });
-
-
-
-/*=====================================
-    BACK TO TOP BUTTON
-=====================================*/
-
-
-const topButton = document.createElement("button");
-
-
-topButton.innerHTML = "↑";
-
-
-topButton.className = "back-top";
-
-
-document.body.appendChild(topButton);
-
-
-
-window.addEventListener("scroll", () => {
-
-
-    if (window.scrollY > 500) {
-
-        topButton.classList.add("show");
-
-    }
-
-    else {
-
-        topButton.classList.remove("show");
-
-    }
-
-
-});
-
-
-
-topButton.addEventListener("click", () => {
-
-
-    window.scrollTo({
-
-        top: 0,
-
-        behavior: "smooth"
-
-    });
-
-
-});
-/*=====================================
-    BACK TO TOP STYLE
-=====================================*/
-
-
-const style = document.createElement("style");
-
-
-style.innerHTML = `
-
-
-.back-top{
-
-position:fixed;
-
-bottom:30px;
-
-left:30px;
-
-width:50px;
-
-height:50px;
-
-border-radius:50%;
-
-border:none;
-
-background:#125918;
-
-color:white;
-
-font-size:25px;
-
-cursor:pointer;
-
-opacity:0;
-
-visibility:hidden;
-
-transition:.35s;
-
-z-index:9999;
-
-box-shadow:0 10px 25px rgba(0,0,0,.2);
-
-}
-
-
-.back-top:hover{
-
-background:#1E7610;
-
-transform:translateY(-5px);
-
-}
-
-
-
-.back-top.show{
-
-opacity:1;
-
-visibility:visible;
-
-}
-
-
-`;
-
-
-document.head.appendChild(style);
-
 
 
 /*=====================================
     SEARCH ENTER EVENT
 =====================================*/
 
-
 const searchInputs =
     document.querySelectorAll(
-        ".hero-search input,.search-small input"
+        ".hero-search input, .search-small input"
     );
 
 
 searchInputs.forEach(input => {
 
+    input.addEventListener("keydown", event => {
 
-    input.addEventListener("keypress", (e) => {
-
-
-        if (e.key === "Enter") {
-
+        if (event.key === "Enter") {
 
             alert(
                 "در نسخه نهایی، نتیجه جستجو نمایش داده می‌شود."
             );
 
-
         }
-
 
     });
 
-
 });
-
 
 
 /*=====================================
     BUTTON CLICK EFFECT
 =====================================*/
 
+/*
+    back-top از این افکت مستثنی شده
+    تا با hover / show تداخل نداشته باشد.
+*/
 
-document.querySelectorAll("button")
-    .forEach(btn => {
+document
+    .querySelectorAll(
+        "button:not(.back-top)"
+    )
+    .forEach(button => {
 
+        button.addEventListener("click", () => {
 
-        btn.addEventListener("click", () => {
-
-
-            btn.style.transform = "scale(.96)";
+            button.style.transform =
+                "scale(.96)";
 
 
             setTimeout(() => {
 
-
-                btn.style.transform = "";
-
+                button.style.transform = "";
 
             }, 150);
 
-
         });
 
-
     });
-
 
 
 /*=====================================
     ACTIVE CATEGORY
 =====================================*/
-
 
 const categories =
     document.querySelectorAll(
@@ -1181,56 +1200,84 @@ const categories =
     );
 
 
+categories.forEach(category => {
 
-categories.forEach(cat => {
+    category.addEventListener("click", () => {
 
-
-    cat.addEventListener("click", () => {
-
-
-        categories.forEach(c => {
-
-            c.classList.remove("selected");
-
+        categories.forEach(item => {
+            item.classList.remove("selected");
         });
 
-
-        cat.classList.add("selected");
-
+        category.classList.add("selected");
 
     });
-
 
 });
 
+
+/*=====================================
+    AI PAGE
+=====================================*/
+
 function initAIPage() {
 
-    const input = document.getElementById("aiQuestion");
-    const btn = document.getElementById("sendAI");
+    const input =
+        document.getElementById("aiQuestion");
 
-    btn.addEventListener("click", sendQuestion);
+    const button =
+        document.getElementById("sendAI");
 
-    input.addEventListener("keydown", function (e) {
 
-        if (e.key === "Enter") {
+    if (!input || !button) return;
 
-            e.preventDefault();
 
-            sendQuestion();
+    button.addEventListener(
+        "click",
+        sendQuestion
+    );
+
+
+    input.addEventListener(
+        "keydown",
+        event => {
+
+            if (event.key === "Enter") {
+
+                event.preventDefault();
+
+                sendQuestion();
+
+            }
 
         }
-
-    });
+    );
 
 }
 
+
 function sendQuestion() {
 
-    const input = document.getElementById("aiQuestion");
+    const input =
+        document.getElementById("aiQuestion");
 
-    if (input.value.trim() === "") return;
+    const chat =
+        document.getElementById("ai-chat");
 
-    const chat = document.getElementById("ai-chat");
+    const aiPage =
+        document.querySelector(".ai-page");
+
+
+    if (!input || !chat || !aiPage) {
+        return;
+    }
+
+
+    const question =
+        input.value.trim();
+
+
+    if (!question) return;
+
 
     chat.innerHTML = `
 
@@ -1239,15 +1286,137 @@ function sendQuestion() {
             <h3>پاسخ هوش مصنوعی</h3>
 
             <p>
-
                 این یک پاسخ آزمایشی است.
-                در فازهای بعدی پاسخ واقعی هوش مصنوعی در این قسمت نمایش داده خواهد شد.
+                در فازهای بعدی پاسخ واقعی هوش مصنوعی
+                در این قسمت نمایش داده خواهد شد.
             </p>
 
         </div>
 
     `;
 
-    document.querySelector(".ai-page").classList.add("chat-mode");
+
+    aiPage.classList.add("chat-mode");
 
 }
+
+
+/*=====================================
+    MOBILE MENU
+=====================================*/
+
+const mobileMenuToggle =
+    document.getElementById(
+        "mobileMenuToggle"
+    );
+
+const mobileMenu =
+    document.getElementById(
+        "mobileMenu"
+    );
+
+const mobileMenuClose =
+    document.getElementById(
+        "mobileMenuClose"
+    );
+
+const mobileMenuOverlay =
+    document.getElementById(
+        "mobileMenuOverlay"
+    );
+
+
+function openMobileMenu() {
+
+    if (!mobileMenu) return;
+
+    mobileMenu.classList.add("open");
+
+    mobileMenuOverlay?.classList.add("show");
+
+    document.body.style.overflow =
+        "hidden";
+
+}
+
+
+function closeMobileMenu() {
+
+    if (!mobileMenu) return;
+
+    mobileMenu.classList.remove("open");
+
+    mobileMenuOverlay?.classList.remove("show");
+
+    document.body.style.overflow = "";
+
+}
+
+
+/* Open */
+
+mobileMenuToggle?.addEventListener(
+    "click",
+    openMobileMenu
+);
+
+
+/* Close */
+
+mobileMenuClose?.addEventListener(
+    "click",
+    closeMobileMenu
+);
+
+
+/* Overlay */
+
+mobileMenuOverlay?.addEventListener(
+    "click",
+    closeMobileMenu
+);
+
+
+/*=====================================
+    BACK TO TOP STYLE
+=====================================*/
+
+const style =
+    document.createElement("style");
+
+
+style.textContent = `
+
+.back-top {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    background: #125918;
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: .35s;
+    z-index: 9999;
+    box-shadow: 0 10px 25px rgba(0,0,0,.2);
+}
+
+.back-top:hover {
+    background: #1E7610;
+    transform: translateY(-5px);
+}
+
+.back-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+`;
+
+document.head.appendChild(style);
+
