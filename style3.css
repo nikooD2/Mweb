@@ -333,7 +333,7 @@ body {
     text-align: center;
     color: white;
     width: 100%;
-    min-height: 90vh;
+    min-height: 80vh;
     background:
         linear-gradient(
             rgba(0, 0, 0, .60),
@@ -1701,7 +1701,8 @@ img {
 /* این بخش‌ها در دسکتاپ مخفی هستند */
 .mobile-hero,
 .mobile-menu,
-.mobile-menu-overlay {
+.mobile-menu-overlay,
+.mobile-header {
     display: none;
 }
 
@@ -1740,29 +1741,74 @@ img {
     /*====================================
       MOBILE HERO
     ====================================*/
+.mobile-header {
+    display:block;
+    position: fixed;
 
-    .mobile-hero {
-        display: flex;
+    top: 0;
+    left: 0;
 
-        position: fixed;
+    width: 100%;
 
-        top: 0;
-        left: 0;
+    z-index: 10001;
 
-        width: 100%;
-        height: 70px;
+    background: #fff;
 
-        z-index: 10001;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, .08);
+}
 
-        background: #fff;
 
-        align-items: center;
+.mobile-hero {
+    display: flex;
 
-        box-shadow: 0 3px 15px rgba(0, 0, 0, .08);
+    position: relative;
 
-        direction: ltr;
-    }
+    width: 100%;
+    height: 70px;
 
+    align-items: center;
+
+    direction: ltr;
+}
+
+.nav-bottom {
+    height: 40px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 28px;
+
+    overflow-x: auto;
+
+    white-space: nowrap;
+
+    background: #fff;
+
+    direction: rtl;
+
+    scrollbar-width: none;
+}
+
+.nav-bottom::-webkit-scrollbar {
+    display: none;
+}
+
+
+.nav-bottom a {
+    text-decoration: none;
+    color: #333;
+    font-size: var(--fs-base);
+    transition: .3s;
+    flex-shrink: 0;
+}
+
+
+.nav-bottom a:hover {
+    color: var(--primary-light);
+}
 
     /*------------------------------------
       MENU BUTTON
@@ -1771,7 +1817,7 @@ img {
     .mobile-menu-button {
         position: absolute;
 
-        left: 12px;
+        right: 12px;
         top: 50%;
 
         transform: translateY(-50%);
@@ -1805,41 +1851,36 @@ img {
       LANGUAGE
     ------------------------------------*/
 
-    .mobile-language {
-        position: absolute;
+        .mobile-language {
+            position: absolute;
 
-        left: 60px;
-        top: 50%;
+            right: 60px;
+            top: 50%;
 
-        transform: translateY(-50%);
+            transform: translateY(-50%);
 
-        width: 48px;
-        min-width: 48px;
-        max-width: 48px;
+            width: 48px;
+            min-width: 48px;
+            max-width: 48px;
 
-        height: 36px;
+            height: 36px;
 
-        border: 1px solid var(--border);
+            border: 1px solid var(--border);
+            border-radius: 9px;
 
-        border-radius: 9px;
+            background: #fff;
+            color: #333;
 
-        background: #fff;
+            padding: 0 5px;
 
-        color: #333;
+            font-family: inherit;
+            font-size: var(--fs-xs);
 
-        padding: 0 5px;
+            box-sizing: border-box;
+            cursor: pointer;
 
-        font-family: inherit;
-
-        font-size: var(--fs-xs);
-
-        box-sizing: border-box;
-
-        cursor: pointer;
-
-        direction: ltr !important;
-    }
-
+            direction: ltr !important;
+        }
 
     /*------------------------------------
       MOBILE LOGO
@@ -1848,10 +1889,10 @@ img {
     .mobile-hero-logo {
         position: absolute;
 
-        left: 50%;
+        left: 12px;
         top: 50%;
 
-        transform: translate(-50%, -50%);
+        transform: translateY(-50%);
 
         width: 120px;
         height: 55px;
@@ -1914,14 +1955,13 @@ img {
     /*====================================
       MOBILE SIDE MENU
     ====================================*/
-
     .mobile-menu {
         display: flex;
 
         position: fixed;
 
         top: 0;
-        left: 0;
+        right: 0;
 
         width: 82%;
         max-width: 340px;
@@ -1934,11 +1974,11 @@ img {
 
         flex-direction: column;
 
-        transform: translateX(-100%);
+        transform: translateX(100%);
 
         transition: transform .35s ease;
 
-        box-shadow: 10px 0 35px rgba(0, 0, 0, .18);
+        box-shadow: -10px 0 35px rgba(0, 0, 0, .18);
 
         direction: rtl;
     }
@@ -1946,7 +1986,6 @@ img {
     .mobile-menu.open {
         transform: translateX(0);
     }
-
 
     /*====================================
       MENU OVERLAY
@@ -2094,7 +2133,8 @@ img {
     .main-layout {
         display: block;
         width: 100%;
-        padding: 80px 0px 15px;
+        padding: 110px 0px 15px;
+        min-height: 70vh;
         box-sizing: border-box;
         background: var(--white);
     }
@@ -2106,6 +2146,7 @@ img {
 
     #dynamic-content {
         width: 100%;
+        min-height: 70vh;
         box-sizing: border-box;
         padding: 22px;
         border-radius: 16px;

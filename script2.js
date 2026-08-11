@@ -1041,7 +1041,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
             if (
                 passwordInput &&
-                passwordInput.value === "1234"
+                passwordInput.value === ""
             ) {
 
                 showProtectedContent();
@@ -1419,4 +1419,3 @@ style.textContent = `
 `;
 
 document.head.appendChild(style);
-
