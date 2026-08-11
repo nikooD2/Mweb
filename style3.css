@@ -387,34 +387,45 @@ body {
 /* ===========================
    Hero Search
 =========================== */
-
 .hero-search {
     width: 50%;
     display: flex;
-    background: white;
-    border-radius: 50px;
-    overflow: hidden;
-    box-shadow: 0 15px 40px rgba(0,0,0,.25);
+    align-items: center;
+    gap: 12px;
+    background: transparent;
+    box-shadow: none;
+    overflow: visible;
 }
+
 
 .hero-search input {
     flex: 1;
-    border: none;
-    outline: none;
     height: 68px;
     padding: 0 22px;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    background: white;
     font-size: var(--fs-base);
+    box-shadow: 0 15px 40px rgba(0,0,0,.25);
+    box-sizing: border-box;
 }
 
+
 .hero-search button {
-    width: 170px;
+    flex: 0 0 130px;
+    width: 130px;
+    height: 56px;
     border: none;
+    border-radius: 30px;
     background: var(--primary);
     color: white;
     font-size: var(--fs-base);
     cursor: pointer;
     transition: .3s;
+    box-shadow: 0 10px 25px rgba(0,0,0,.2);
 }
+
 
 .hero-search button:hover {
     background: var(--primary-light);
@@ -1393,10 +1404,10 @@ input:focus {
     transition: .35s;
 }
 
-.hero-search:hover {
+/* .hero-search:hover {
     transform: translateY(-3px);
     box-shadow: 0 25px 55px rgba(0,0,0,.25);
-}
+} */
 
 .logo img {
     transition: .3s;
@@ -1472,7 +1483,7 @@ img {
 /* =========================
    Tablet / Laptop
 ========================= */
-
+/* 
 @media (max-width: 1366px) {
 
     .hero {
@@ -1497,13 +1508,13 @@ img {
         height: 82px;
         margin-top: 35px;
     }
-}
+} */
 
 
 /* =========================
    Smaller Laptop / Tablet
 ========================= */
-
+/* 
 @media (max-width: 1200px) {
 
     .main-layout {
@@ -1515,19 +1526,14 @@ img {
     .hero-search {
         width: 80%;
     }
-}
+} */
 
 
 /* =========================
    Tablet
 ========================= */
-
+/* 
 @media (max-width: 900px) {
-
-    /* .nav-bottom {
-        display: none;
-    } */
-
     .search-small {
         display: none;
     }
@@ -1561,7 +1567,7 @@ img {
     .left-panel {
         min-width: 0;
     }
-}
+} */
 
 
 /* =========================
@@ -1583,17 +1589,21 @@ img {
     }
 
     .hero-search {
-        flex-direction: column;
-        border-radius: 15px;
+        width: 90%;
+        gap: 10px;
     }
 
     .hero-search input {
-        width: 100%;
+        height: 55px;
+        padding: 0 18px;
+        font-size: var(--fs-base);
     }
 
     .hero-search button {
-        width: 100%;
-        height: 60px;
+        flex: 0 0 100px;
+        width: 100px;
+        height: 50px;
+        font-size: 14px;
     }
 
     .expert-grid {
