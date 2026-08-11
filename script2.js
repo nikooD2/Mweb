@@ -1041,7 +1041,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
             if (
                 passwordInput &&
-                passwordInput.value === ""
+                passwordInput.value === "1234"
             ) {
 
                 showProtectedContent();
