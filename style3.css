@@ -177,8 +177,8 @@ body {
 }
 
 .logo img {
-    height: 48px;
-    margin-top: 45px;
+    height: 60px;
+    margin-top: 40px;
 }
 
 /* ===========================
@@ -189,12 +189,13 @@ body {
     display: flex;
     align-items: center;
     gap: 18px;
+    margin-top: 20px;
 }
 
 .nav-icons a {
     color: white;
     transition: .3s;
-    font-size: var(--fs-md);
+    font-size: var(--fs-lg);
 }
 
 #navbar.active .nav-icons a {
@@ -203,24 +204,6 @@ body {
 
 .nav-icons a:hover {
     color: var(--primary);
-}
-
-.mobile-top-icons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 25px;
-    margin-bottom: 20px;
-}
-
-.mobile-top-icons a {
-    color: var(--primary);
-    font-size: 22px;
-    text-decoration: none;
-}
-
-.mobile-top-icons a:hover {
-    opacity: 0.7;
 }
 
 /* ===========================
@@ -1065,7 +1048,7 @@ body {
 }
 
 .card {
-    background: #fafafa;
+    background: var(--white);
     border: 1px solid #ececec;
     border-radius: 15px;
     padding: 25px;
@@ -1788,14 +1771,16 @@ img {
 
 
 .mobile-hero {
-    display: flex;
-
-    position: relative;
-
     width: 100%;
     height: 70px;
 
+    display: flex;
     align-items: center;
+
+    padding: 0 12px;
+    box-sizing: border-box;
+
+    gap: 18px;
 
     direction: ltr;
 }
@@ -1839,111 +1824,136 @@ img {
     color: var(--primary-light);
 }
 
-    /*------------------------------------
-      MENU BUTTON
-    ------------------------------------*/
+/* ====================================
+   MOBILE HERO
+==================================== */
 
-    .mobile-menu-button {
-        position: absolute;
+.mobile-hero {
+    width: 100%;
+    height: 70px;
 
-        right: 12px;
-        top: 50%;
+    display: flex;
+    align-items: center;
 
-        transform: translateY(-50%);
+    padding: 0 12px;
+    box-sizing: border-box;
 
-        width: 40px;
-        height: 40px;
+    gap: 18px;
 
-        border: none;
-
-        background: transparent;
-
-        color: var(--primary);
-
-        font-size: 32px;
-        line-height: 1;
-
-        padding: 0;
-
-        display: flex;
-
-        align-items: center;
-        justify-content: center;
-
-        cursor: pointer;
-
-        direction: ltr !important;
-    }
+    direction: ltr;
+}
 
 
-    /*------------------------------------
-      LANGUAGE
-    ------------------------------------*/
+/* ====================================
+   LOGO
+==================================== */
 
-        .mobile-language {
-            position: absolute;
+.mobile-hero-logo {
+    display: flex;
+    align-items: center;
 
-            right: 60px;
-            top: 50%;
+    flex: 1;
 
-            transform: translateY(-50%);
+    height: 100%;
+}
 
-            width: 48px;
-            min-width: 48px;
-            max-width: 48px;
+.mobile-hero-logo img {
+    display: block;
 
-            height: 36px;
+    width: 60px;
+    height: auto;
+}
 
-            border: 1px solid var(--border);
-            border-radius: 9px;
 
-            background: #fff;
-            color: #333;
+/* ====================================
+   ICONS
+==================================== */
 
-            padding: 0 5px;
+.mobile-icons {
+    display: flex;
+    align-items: center;
 
-            font-family: inherit;
-            font-size: var(--fs-xs);
+    gap: 16px;
 
-            box-sizing: border-box;
-            cursor: pointer;
+    flex-shrink: 0;
+}
 
-            direction: ltr !important;
-        }
+.mobile-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    /*------------------------------------
-      MOBILE LOGO
-    ------------------------------------*/
+    width: 20px;
+    height: 20px;
 
-    .mobile-hero-logo {
-        position: absolute;
+    color: var(--primary);
 
-        left: 12px;
-        top: 50%;
+    text-decoration: none;
 
-        transform: translateY(-50%);
+    font-size: 21px;
+}
 
-        width: 120px;
-        height: 55px;
+.mobile-icons a i {
+    display: block;
+}
 
-        display: flex;
 
-        align-items: center;
-        justify-content: center;
+/* ====================================
+   LANGUAGE
+==================================== */
 
-        direction: ltr !important;
-    }
+.mobile-language {
+    width: 48px;
+    height: 36px;
 
-    .mobile-hero-logo img {
-        width: auto;
+    flex-shrink: 0;
 
-        height: 48px;
+    padding: 0 5px;
+    
+    box-sizing: border-box;
 
-        max-width: 120px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
 
-        object-fit: contain;
-    }
+    background: white;
+    color: #333;
 
+    font-family: inherit;
+    font-size: var(--fs-xs);
+
+    direction: ltr;
+
+    cursor: pointer;
+}
+
+
+/* ====================================
+   MENU
+==================================== */
+
+.mobile-menu-button {
+    width: 40px;
+    height: 40px;
+
+    flex-shrink: 0;
+
+    padding: 0;
+
+    border: none;
+
+    background: transparent;
+
+    color: var(--primary);
+
+    font-size: 32px;
+    line-height: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+}
 
 
     /*====================================

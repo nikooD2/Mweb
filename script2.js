@@ -82,6 +82,35 @@ topButton.addEventListener("click", () => {
 
 });
 
+/*=====================================
+   SCROLL TO DASHBOARD
+=====================================*/
+
+function scrollToDashboard() {
+
+    // if (window.innerWidth <= 600) {
+    //     return;
+    // }
+
+    const dashboard =
+        document.getElementById("dashboard");
+
+    if (!dashboard) return;
+
+    const headerHeight =
+        navbar ? navbar.offsetHeight : 0;
+
+    const top =
+        dashboard.getBoundingClientRect().top +
+        window.pageYOffset -
+        headerHeight -
+        20;
+
+    window.scrollTo({
+        top: Math.max(0, top),
+        behavior: "smooth"
+    });
+}
 
 /*=====================================
     DASHBOARD MENU
@@ -166,38 +195,7 @@ function openDashboard(page) {
     if (button) {
         activateMenuButton(button);
     }
-
-
-    /*
-        در موبایل اسکرول داشبورد انجام نشود
-    */
-
-    if (window.innerWidth <= 600) {
-        return;
-    }
-
-
-    const dashboard =
-        document.getElementById("dashboard");
-
-    if (!dashboard) return;
-
-
-    const headerHeight =
-        navbar ? navbar.offsetHeight : 0;
-
-
-    const top =
-        dashboard.getBoundingClientRect().top +
-        window.pageYOffset -
-        headerHeight -
-        20;
-
-
-    window.scrollTo({
-        top: Math.max(0, top),
-        behavior: "smooth"
-    });
+    scrollToDashboard();
 
 }
 
@@ -206,7 +204,7 @@ function openDashboard(page) {
     LOAD PAGE
 =====================================*/
 
-function loadPage(page) {
+async function loadPage(page) {
 
     switch (page) {
 
@@ -340,114 +338,83 @@ function loadPage(page) {
 
             </div>
 
-`;
-
-            break;
-
-
-        /*=============================*/
-        case "search":
-
-            content.innerHTML = `
-
-<h2>
-
-جستجو
-
-</h2>
-
-<div class="hero-search">
-
-<input placeholder="موضوع شبهه را وارد کنید...">
-
-<button>
-
-جستجو
-
-</button>
-
-`;
-
-            break;
+            `;
+        initHeroSearch();
+        break;
 
 
         /*=============================*/
+//         case "search":
 
-        case "advanced":
+//             content.innerHTML = `
 
-            content.innerHTML = `
+// <h2>
 
-<h2>
+// جستجو
 
-جستجوی پیشرفته
+// </h2>
 
-</h2>
+// <div class="hero-search">
 
-<div class="cards">
+// <input placeholder="موضوع شبهه را وارد کنید...">
 
-<div class="card">
+// <button>
 
-کلمات کلیدی
+// جستجو
 
-</div>
+// </button>
 
-<div class="card">
+// `;
 
-دسته بندی
-
-</div>
-
-<div class="card">
-
-...
-
-</div>
-
-<div class="card">
-
-...
-
-</div>
-
-</div>
-
-`;
-
-            break;
+//             break;
 
 
         /*=============================*/
 
-        //case "ai":
+//         case "advanced":
 
-//            content.innerHTML = `
+//             content.innerHTML = `
 
-//<h2>
+// <h2>
 
-//پرسش از هوش مصنوعی
+// جستجوی پیشرفته
 
-//</h2>
+// </h2>
 
-//<div class="hero-search">
+// <div class="cards">
 
-//<input placeholder="سوال خود را بنویسید...">
+// <div class="card">
 
-//<button>
+// کلمات کلیدی
 
-//ارسال
+// </div>
 
-//</button>
+// <div class="card">
 
-//</div>
+// دسته بندی
 
-//<div class="card" style="margin-top:30px;">
+// </div>
 
-//پاسخ هوش مصنوعی اینجا نمایش داده می‌شود.
+// <div class="card">
 
-//</div>
+// ...
 
-            //break;
-//`;
+// </div>
+
+// <div class="card">
+
+// ...
+
+// </div>
+
+// </div>
+
+// `;
+
+//             break;
+
+
+        /*=============================*/
         case "ai":
 
             content.innerHTML = `
@@ -513,53 +480,53 @@ function loadPage(page) {
 
         /*=============================*/
 
-        case "experts":
+//         case "experts":
 
-            content.innerHTML = `
+//             content.innerHTML = `
 
-<h2>
+// <h2>
 
-پرسش از متخصصان
+// پرسش از متخصصان
 
-</h2>
+// </h2>
 
-<p>
+// <p>
 
-متخصص مورد نظر خود را انتخاب کنید.
+// متخصص مورد نظر خود را انتخاب کنید.
 
-</p>
+// </p>
 
-<div class="cards">
+// <div class="cards">
 
-<div class="card">
+// <div class="card">
 
-فقه
+// فقه
 
-</div>
+// </div>
 
-<div class="card">
+// <div class="card">
 
-تاریخ
+// تاریخ
 
-</div>
+// </div>
 
-<div class="card">
+// <div class="card">
 
-قرآن
+// قرآن
 
-</div>
+// </div>
 
-<div class="card">
+// <div class="card">
 
-اخلاق
+// اخلاق
 
-</div>
+// </div>
 
-</div>
+// </div>
 
-`;
+// `;
 
-            break;
+            // break;
         /*=============================*/
         case "new":
 
@@ -988,7 +955,38 @@ function loadPage(page) {
 
 
         /*=============================*/
+    case "search":
+
+    await SearchModule.init();
+
+    SearchModule.renderSearchPage();
+
+    break;
+
+
+    case "search-results":
+        SearchModule.search(
+            data.query || ""
+        );
+        break;
+
+
+    case "question":
+        showQuestion(
+            data.id,
+            data.attachmentId || null
+        );
+        break;
+
+    case "advanced":
+
+        await SearchModule.init();
+
+        SearchModule.renderAdvancedSearchPage();
+
+        break;
     }
+    scrollToDashboard();
 
 }
 
@@ -1003,7 +1001,7 @@ window.addEventListener("DOMContentLoaded", () => {
         دسکتاپ → home
         موبایل → mobile-home
     */
-
+    initHeroSearch();
     const isMobile = window.innerWidth <= 600;
 
     const initialPage = isMobile
@@ -1021,7 +1019,6 @@ window.addEventListener("DOMContentLoaded", () => {
     if (initialButton) {
         activateMenuButton(initialButton);
     }
-
 
     /* Password */
 
@@ -1129,33 +1126,6 @@ document
         observer.observe(item);
 
     });
-
-
-/*=====================================
-    SEARCH ENTER EVENT
-=====================================*/
-
-const searchInputs =
-    document.querySelectorAll(
-        ".hero-search input, .search-small input"
-    );
-
-
-searchInputs.forEach(input => {
-
-    input.addEventListener("keydown", event => {
-
-        if (event.key === "Enter") {
-
-            alert(
-                "در نسخه نهایی، نتیجه جستجو نمایش داده می‌شود."
-            );
-
-        }
-
-    });
-
-});
 
 
 /*=====================================
@@ -1375,6 +1345,7 @@ mobileMenuOverlay?.addEventListener(
     "click",
     closeMobileMenu
 );
+
 
 
 /*=====================================
