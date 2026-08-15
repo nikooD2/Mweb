@@ -204,21 +204,20 @@ const SearchModule = (() => {
     /* =====================================================
     ADVANCED SEARCH PAGE
     ===================================================== */
+
     function renderAdvancedSearchPage() {
 
         searchOrigin = "advanced";
 
         const content =
-            document.getElementById(
-                "dynamic-content"
-            );
+            document.getElementById("dynamic-content");
 
         if (!content) return;
 
 
         content.innerHTML = `
 
-            <div class="search-page">
+            <div class="search-page advanced-search-page">
 
                 <!-- BREADCRUMB -->
 
@@ -233,14 +232,19 @@ const SearchModule = (() => {
 
                 <!-- TITLE -->
 
-                <h2>
-                    جستجوی پیشرفته
-                </h2>
+                <div class="page-heading">
+
+                    <h2>
+                        جستجوی پیشرفته
+                    </h2>
+
+                </div>
 
 
                 <!-- ADVANCED SEARCH -->
 
                 <div class="advanced-search-form">
+
 
                     <div class="advanced-field">
 
@@ -252,6 +256,7 @@ const SearchModule = (() => {
                             id="advanced-title"
                             type="text"
                             class="advanced-input"
+                            placeholder="عنوان مورد نظر را وارد کنید"
                         >
 
                     </div>
@@ -267,6 +272,7 @@ const SearchModule = (() => {
                             id="advanced-author"
                             type="text"
                             class="advanced-input"
+                            placeholder="نام پدیدآور را وارد کنید"
                         >
 
                     </div>
@@ -304,13 +310,19 @@ const SearchModule = (() => {
                     </div>
 
 
-                    <button
-                        id="advanced-search-submit"
-                        class="search-submit"
-                        type="button"
-                    >
-                        جستجو
-                    </button>
+                    <div class="advanced-search-actions">
+
+                        <button
+                            id="advanced-search-submit"
+                            class="search-submit"
+                            type="button"
+                        >
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            جستجو
+                        </button>
+
+                    </div>
+
 
                 </div>
 
@@ -337,6 +349,7 @@ const SearchModule = (() => {
         );
 
     }
+
     /* =====================================================
        PARSE XML RECORD
        ===================================================== */

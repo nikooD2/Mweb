@@ -11,6 +11,128 @@
     text-align: right;
 }
 
+/* =========================================================
+   ADVANCED SEARCH
+   ========================================================= */
+
+.advanced-search-page .page-heading {
+    margin-bottom: 1.75rem;
+}
+
+.advanced-search-page .page-heading h2 {
+    margin: 0 0 0.4rem;
+
+    color: var(--text);
+
+    font-size: var(--fs-lg);
+
+    font-weight: 800;
+}
+
+.advanced-search-page .page-heading p {
+    margin: 0;
+
+    color: var(--gray);
+
+    font-size: var(--fs-sm);
+
+    line-height: 1.8;
+}
+
+
+.advanced-search-form {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 1.5rem;
+
+    border: 1px solid var(--border);
+
+    border-radius: 1rem;
+
+    background: var(--white);
+
+    box-shadow:
+        0 0.5rem 1.5rem
+        color-mix(
+            in srgb,
+            var(--text) 5%,
+            transparent
+        );
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 1.25rem;
+}
+
+
+.advanced-field {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 0.5rem;
+}
+
+
+.advanced-field label {
+    color: var(--text);
+
+    font-size: var(--fs-sm);
+
+    font-weight: 700;
+}
+
+
+.advanced-input {
+    width: 100%;
+
+    height: 3.1rem;
+
+    box-sizing: border-box;
+
+    padding: 0 0.9rem;
+
+    border: 1px solid var(--border);
+
+    border-radius: 0.75rem;
+
+    background: var(--white);
+
+    color: var(--text);
+
+    outline: none;
+
+    font-family: inherit;
+
+    font-size: var(--fs-sm);
+}
+
+
+.advanced-input:focus {
+    border-color: var(--primary);
+
+    box-shadow:
+        0 0 0 0.25rem
+        color-mix(
+            in srgb,
+            var(--primary) 10%,
+            transparent
+        );
+}
+
+
+.advanced-search-actions {
+    grid-column: 1 / -1;
+
+    display: flex;
+
+    justify-content: flex-start;
+}
 
 /* =========================================================
    BREADCRUMB
@@ -75,7 +197,7 @@
 
 .search-input-wrap {
     position: relative;
-
+    max-width: 700px;
     flex: 1;
 }
 
@@ -395,7 +517,7 @@
    MOBILE
    ========================================================= */
 
-@media (max-width: 700px) {
+@media (max-width: 600px) {
 
     .search-toolbar {
         gap: 0.5rem;
@@ -416,4 +538,21 @@
         padding: 1.125rem;
     }
 
+    .advanced-search-form {
+        grid-template-columns: 1fr;
+
+        padding: 1.125rem;
+
+        gap: 1rem;
+    }
+
+    .advanced-search-actions {
+        grid-column: auto;
+    }
+
+    .advanced-search-actions .search-submit {
+        width: 100%;
+    }
+
 }
+
