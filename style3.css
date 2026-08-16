@@ -447,7 +447,8 @@ body {
     font-size: var(--fs-xl);
 }
 
-.menu-btn {
+.menu-btn,
+.menu-btn-tablet{
     width: 100%;
     height: 52px;
     margin-bottom: 12px;
@@ -463,17 +464,24 @@ body {
     transition: .3s;
 }
 
-.menu-btn i {
+.menu-btn-tablet{
+    display: none;
+}
+
+.menu-btn i,
+.menu-btn-tablet i {
     width: 22px;
     text-align: center;
 }
 
-.menu-btn:hover {
+.menu-btn:hover,
+.menu-btn-tablet:hover {
     background: var(--primary);
     color: #fff;
 }
 
-.menu-btn.active {
+.menu-btn.active,
+.menu-btn-tablet.active {
     background: var(--primary);
     color: #fff;
 }
@@ -1402,12 +1410,14 @@ input:focus {
 
 /* Dashboard */
 
-.menu-btn {
+.menu-btn,
+.menu-btn-tablet {
     position: relative;
     overflow: hidden;
 }
 
-.menu-btn::before {
+.menu-btn::before,
+.menu-btn-tablet::before {
     content: "";
     position: absolute;
     left: -100%;
@@ -1418,7 +1428,8 @@ input:focus {
     transition: .35s;
 }
 
-.menu-btn:hover::before {
+.menu-btn:hover::before,
+.menu-btn-tablet:hover::before {
     left: 100%;
 }
 
@@ -1463,10 +1474,10 @@ img {
 *=======================================*/
 
 /* =========================
-   Tablet / Laptop
+   Tablet
 ========================= */
-/* 
-@media (max-width: 1366px) {
+
+@media (max-width: 1200px) {
 
     .hero {
         height: 60vh;
@@ -1477,7 +1488,7 @@ img {
     }
 
     .main-layout {
-        grid-template-columns: 220px minmax(0, 1fr) 240px;
+        grid-template-columns: 220px minmax(0, 1fr);
         gap: 20px;
         padding: 35px;
     }
@@ -1490,7 +1501,15 @@ img {
         height: 82px;
         margin-top: 35px;
     }
-} */
+
+    .left-panel {
+        display: none;
+    }
+    
+    .menu-btn-tablet{
+        display: flex;
+    }
+}
 
 
 /* =========================
@@ -1552,74 +1571,6 @@ img {
 } */
 
 
-/* =========================
-   Small screens
-========================= */
-
-@media (max-width: 600px) {
-
-    .nav-top {
-        padding: 15px;
-    }
-
-    .hero-content h1 {
-        font-size: var(--fs-xl);
-    }
-
-    .hero-content p {
-        font-size: var(--fs-base);
-    }
-
-    .hero-search {
-        width: calc(100% - 30px);
-        max-width: 500px;
-        margin: 0 auto;
-        gap: 10px;
-        box-sizing: border-box;
-    }
-
-    .hero-search input {
-        min-width: 0;
-        width: 100%;
-        height: 55px;
-        padding: 0 18px;
-        font-size: var(--fs-base);
-        box-sizing: border-box;
-    }
-
-    .hero-search button {
-        flex: 0 0 100px;
-        width: 100px;
-        max-width: 100px;
-        height: 50px;
-        font-size: 14px;
-    }
-
-    .expert-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .cards {
-        grid-template-columns: 1fr;
-    }
-
-    .about-site {
-        padding: 50px 25px;
-    }
-
-    /* همچنان سه ستون */
-    .main-layout {
-        grid-template-columns: 140px minmax(0, 1fr) 140px;
-        gap: 8px;
-        padding: 10px;
-    }
-
-    .dashboard,
-    .content-area,
-    .left-panel {
-        min-width: 0;
-    }
-}
 
 /*======================================
     SELECTION
@@ -1710,7 +1661,7 @@ img {
 * MOBILE
 *=======================================*/
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
     *,
     *::before,
     *::after {
@@ -2212,5 +2163,70 @@ img {
     .cards {
         grid-template-columns: 1fr;
     }
+
+    /*====================================
+      HERO SERCH AND NAV
+    ====================================*/
+    .nav-top {
+        padding: 15px;
+    }
+
+    .hero-content h1 {
+        font-size: var(--fs-xl);
+    }
+
+    .hero-content p {
+        font-size: var(--fs-base);
+    }
+
+    .hero-search {
+        width: calc(100% - 30px);
+        max-width: 500px;
+        margin: 0 auto;
+        gap: 10px;
+        box-sizing: border-box;
+    }
+
+    .hero-search input {
+        min-width: 0;
+        width: 100%;
+        height: 55px;
+        padding: 0 18px;
+        font-size: var(--fs-base);
+        box-sizing: border-box;
+    }
+
+    .hero-search button {
+        flex: 0 0 100px;
+        width: 100px;
+        max-width: 100px;
+        height: 50px;
+        font-size: 14px;
+    }
+
+    /* .expert-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .about-site {
+        padding: 50px 25px;
+    } */
+
+    /* همچنان سه ستون */
+    /* .main-layout {
+        grid-template-columns: 140px minmax(0, 1fr) 140px;
+        gap: 8px;
+        padding: 10px;
+    } */
+
+    /* .dashboard,
+    .content-area,
+    .left-panel {
+        min-width: 0;
+    } */
 
 }
