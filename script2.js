@@ -122,6 +122,8 @@ const desktopMenuButtons =
 const mobileMenuButtons =
     document.querySelectorAll(".mobile-menu-btn");
 
+const tabletMenuButtons =
+    document.querySelectorAll(".menu-btn-tablet");
 
 function activateMenuButton(button) {
 
@@ -147,6 +149,13 @@ function activateMenuButton(button) {
         );
     });
 
+    tabletMenuButtons.forEach(btn => {
+        btn.classList.toggle(
+            "active",
+            btn.dataset.page === page
+        );
+    });
+
     loadPage(page);
 }
 
@@ -163,7 +172,17 @@ desktopMenuButtons.forEach(button => {
 
 });
 
+/*
+    tablet menu
+*/
 
+tabletMenuButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+        activateMenuButton(button);
+    });
+
+});
 /*
     Mobile menu
 */
@@ -234,8 +253,13 @@ async function loadPage(page) {
 
 </h3>
 
-<p>
+    <!-- previous  -->
+<!-- <p>
 موضوع، کلیدواژه یا عبارت مربوط به شبهه را وارد و تنها با یک کلیک بهترین پاسخ برای آن را پیدا کنید.
+</p> -->
+
+<p>
+موضوع، کلیدواژه یا عبارت مربوطه را وارد و تنها با یک کلیک بهترین پاسخ برای آن را پیدا کنید.
 </p>
 
 </div>
@@ -257,35 +281,33 @@ async function loadPage(page) {
 <div class="card" onclick="openDashboard('ai')">
 
 <h3>
-
 هوش مصنوعی
-
 </h3>
 
-<p>
-
+    <!-- previous  -->
+<!-- <p>
 هوش مصنوعی مصباح با دریافت متن شبهه، استخراج کلید واژه ها و جستجو در آرشیو را برای شما انجام می دهد
+</p>-->
 
+ <p>
+هوش مصنوعی مصباح با دریافت متن متن، کلید واژه ها را استخراج و جستجو در آرشیو را برای شما انجام می دهد
 </p>
 
-</div>
+    <!-- previous  -->
+<!-- </div>
+    <div class="card" onclick="openDashboard('new')">
 
-<div class="card" onclick="openDashboard('new')">
+        <h3>
+        ارسال شبهه جدید
+        </h3>
 
-<h3>
+        <p>
+        در صورت پیدا نکردن جواب پرسش خود یا تمایل به ارسال شبهه جدید برای ما، از این قسمت با ما در ارتباط باشید
+        </p>
 
-ارسال شبهه جدید
+    </div>
 
-</h3>
-
-<p>
-
-در صورت پیدا نکردن جواب پرسش خود یا تمایل به ارسال شبهه جدید برای ما، از این قسمت با ما در ارتباط باشید
-</p>
-
-</div>
-
-</div>
+</div> -->
 `;
 
             break;
@@ -299,21 +321,33 @@ async function loadPage(page) {
 
             <div class="mobile-home">
 
-                <h1>
+                    <!-- previous  -->
+                <!-- <h1>
                     پاسخ به شبهات مذهبی
                 </h1>
-
                 <p>
-                    جستجو در هزاران سوال، پاسخ و منبع معتبر
+                    جستجو در میان هزاران سوال، پاسخ و منبع معتبر
+                </p>
+                -->
+
+                <h1>
+                    مطالب و معارف اسلامی
+                </h1>
+                <p>
+                    جستجو در میان هزاران مطلب، محتوا و منبع معتبر
                 </p>
 
                 <div class="hero-search">
+                        <!-- previous  -->
+                    <!-- <input
+                        type="text"
+                        placeholder="سوال یا موضوع مورد نظر را وارد کنید..."
+                    > -->
 
                     <input
                         type="text"
-                        placeholder="سوال یا موضوع مورد نظر را وارد کنید..."
+                        placeholder="موضوع مورد نظر را وارد کنید..."
                     >
-
                     <button>
                         جستجو
                     </button>
@@ -329,10 +363,10 @@ async function loadPage(page) {
                     <a href="#" onclick="openDashboard('ai')">
                         هوش مصنوعی
                     </a>
-
-                    <a href="#" onclick="openDashboard('new')">
+                        <!-- previous  -->
+                    <!-- <a href="#" onclick="openDashboard('new')">
                         ارسال شبهه جدید
-                    </a>
+                    </a> -->
 
                 </div>
 
@@ -428,9 +462,9 @@ async function loadPage(page) {
         </button>
 
         <h4>امروز</h4>
-
+            
         <div class="chat-item active">
-            شبهه امامت
+             امامت
         </div>
 
         <div class="chat-item">
@@ -528,7 +562,9 @@ async function loadPage(page) {
 
             // break;
         /*=============================*/
-        case "new":
+
+            // ================= previous ================
+        // case "new":
 
             content.innerHTML = `
 
@@ -703,7 +739,8 @@ async function loadPage(page) {
             }, 0);
 
             break;
-        /*================================*/
+        
+            /*================================*/
 
         case "about":
 
@@ -784,21 +821,17 @@ async function loadPage(page) {
             content.innerHTML = `
 
 <h2>
-
 مرور منابع
-
 </h2>
 
 
 <div class="cards">
 
-
 <div class="card">
 
+
 <h3>
-
-سوالات پرتکرار مذهبی
-
+...
 </h3>
 
 <p>
@@ -824,43 +857,6 @@ async function loadPage(page) {
 </p>
 
 </div>
-
-
-
-<!--
-<div class="card">
-
-<h3>
-
-پژوهش‌ها
-
-</h3>
-
-<p>
-
-مشاهده تحقیقات و بررسی‌های علمی.
-
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<h3>
-
-سوالات پرتکرار مذهبی
-
-</h3>
-
-<p>
-...
-</p>
-
-</div>
--->
-
 
 </div>
 
@@ -873,43 +869,38 @@ async function loadPage(page) {
         case "trend":
 
             content.innerHTML = `
+                <!-- previous  -->
+            <!-- <h2>
+            سوالات روز
+            </h2> -->
+            <h2>مضوعات پرطرفدار</h2>
 
-<h2>
+            <div class="cards">
+            <div class="card">
 
-سوالات روز
+            <h3>دختری به نام رقیه</h3>
 
-</h2>
+            <p>
+            در کتب تاریخی اشاره ای به دختری به نام رقیه برای امام حسین علیه السلام نشده است
+            </p>
 
-<div class="cards">
+            </div>
 
+            <div class="card">
 
-<div class="card">
+            <h3>
 
-<h3>
-دختری به نام رقیه
-</h3>
+            قمه زنی سنت است یا بدعت
 
-<p>
-در کتب تاریخی اشاره ای به دختری به نام رقیه برای امام حسین علیه السلام نشده است
-</p>
+            </h3>
 
-</div>
+            <p>
+            ...
+            </p>
 
-<div class="card">
+            `;
 
-<h3>
-
-قمه زنی سنت است یا بدعت
-
-</h3>
-
-<p>
-...
-</p>
-
-`;
-
-            break;
+                        break;
 
 
         /*=============================*/

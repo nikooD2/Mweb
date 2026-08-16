@@ -114,35 +114,26 @@ const QuestionModule = (() => {
 
                 </header>
 
-
+<!-- previous  -->
                 <!-- QUESTION -->
-
+<!--
                 <section
                     class="question-section"
                 >
 
-                    <h2
-                        class="question-section-title"
-                    >
-                        شبهه
-                    </h2>
+                    <h2  class="question-section-title"> شبهه </h2>
 
-
-                    <p
-                        class="question-section-text"
-                    >
-
+                    <p class="question-section-text">
                         ${escapeHtml(
                             record.question
                         )}
-
                     </p>
 
                 </section>
-
-
+-->
+<!-- previous  -->
                 <!-- ANSWER -->
-
+<!--
                 <section
                     class="question-section"
                 >
@@ -171,7 +162,23 @@ const QuestionModule = (() => {
                     </div>
 
                 </section>
+-->
+<!--new -->
+                <div
+                        class="answer-box"
+                    >
 
+                        <p
+                            class="question-section-text"
+                        >
+
+                            ${escapeHtml(
+                                record.answer
+                            )}
+
+                        </p>
+
+                    </div>
 
                 <!-- ATTACHMENTS -->
 
@@ -212,12 +219,16 @@ const QuestionModule = (() => {
                         :
 
                         `
-                        <p
-                            class="question-section-text"
-                        >
+<!-- previous  -->
+<!--                        <p  class="question-section-text">
                             برای این پرسش پیوستی
                             ثبت نشده است.
-                        </p>
+                            </p>
+-->
+                            <p  class="question-section-text">
+                            برای این مطلب پیوستی
+                            ثبت نشده است.
+                            </p>
                         `
                     }
 
@@ -305,11 +316,14 @@ const QuestionModule = (() => {
                             class="fa-solid
                                   fa-arrow-right"
                         ></i>
-
-                        <span>
+<!-- previous  -->
+<!--                        <span>
                             پرسش قبلی
                         </span>
-
+-->
+                        <span>
+                            قبلی
+                        </span>     
                     </button>
 
 
@@ -341,10 +355,14 @@ const QuestionModule = (() => {
                             : ""
                         }"
                     >
-
-                        <span>
+<!-- previous  -->
+<!--                        <span>
                             پرسش بعدی
                         </span>
+-->
+                        <span>
+                            بعدی
+                        </span> 
 
                         <i
                             class="fa-solid

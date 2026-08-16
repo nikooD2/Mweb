@@ -666,7 +666,8 @@ const SearchModule = (() => {
                             نتیجه‌ای پیدا نشد
                         </h2>
 
-
+<!-- previous  -->
+<!--
                         <p>
                             در صورت تمایل می توانید از بخش
                             <a href="#" onclick="event.preventDefault(); openDashboard('new')">
@@ -674,7 +675,7 @@ const SearchModule = (() => {
                             </a>
                             استفاده کنید.
                         </p>
-
+-->
 
                     </div>
                     `
