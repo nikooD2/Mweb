@@ -419,7 +419,7 @@ body {
 .main-layout {
     width: 100%;
     display: grid;
-    grid-template-columns: 220px minmax(0, 1fr) 240px;
+    grid-template-columns: 230px minmax(0, 1fr) 240px;
     gap: 25px;
     padding: 50px;
     background: #f5f6f5;

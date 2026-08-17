@@ -271,10 +271,6 @@
         font-size: var(--fs-xs);
     }
 
-    .question-position {
-        display: none;
-    }
-
     .attachment-item {
         align-items: flex-start;
     }

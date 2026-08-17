@@ -6,8 +6,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-        <!-- previous  -->
-    <!-- <title>سامانه آرشیو سوالات</title> -->
     <title>سامانه مصباح</title>
 
     <!-- Font Awesome -->
@@ -89,35 +87,22 @@
         <!-- ================= DESKTOP HERO CONTENT ================= -->
 
         <div class="hero-content">
-
-
-                <!-- previous  -->
-            <!-- <h1>
-                پاسخ به شبهات مذهبی
-            </h1>
-            <p>
-                جستجو در میان هزاران سوال، پاسخ و منبع معتبر
-            </p>
-             -->
-
             <h1>
-                مطالب و معارف اسلامی
+                <span class="v1">پاسخ به شبهات مذهبی</span>
+                <span class="v2">بانک محتوای مذهبی</span>
             </h1>
+
             <p>
-                جستجو در میان هزاران مطلب، محتوا و منبع معتبر
+                <span class="v1">جستجو در میان هزاران سوال، پاسخ و منبع معتبر</span>
+                <span class="v2">جستجو در میان هزاران مطلب، محتوا و منبع معتبر</span>
             </p>
 
             <div class="hero-search">
-                    <!-- previous  -->
-                <!-- <input
-                    id="hero-search-input"
-                    type="text"
-                    placeholder="سوال یا موضوع مورد نظر را وارد کنید..."
-                > -->
+
                 <input
                     id="hero-search-input"
                     type="text"
-                    placeholder="موضوع مورد نظر را وارد کنید..."
+                    placeholder="در آرشیو جستجو کنید..."
                 >
 
                 <button
@@ -138,10 +123,21 @@
                 <a href="javascript:void(0)"  onclick="openDashboard('ai')">
                     هوش مصنوعی
                 </a>
-                    <!-- previous  -->
-                <!-- <a href="javascript:void(0)"  onclick="openDashboard('new')">
+                <a
+                    href="javascript:void(0)"
+                    onclick="openDashboard('new')"
+                    class="v1"
+                >
                     ارسال شبهه جدید
-                </a> -->
+                </a>
+
+                <a
+                    href="javascript:void(0)"
+                    onclick="openDashboard('new')"
+                    class="v2"
+                >
+                    ارسال محتوای مرتبط
+                </a>
 
             </div>
 
@@ -270,24 +266,30 @@
                     <span>هوش مصنوعی</span>
                 </button>
 
-                <!-- previous  -->
-                <!-- <button
-                    class="mobile-menu-btn"
+                <button
+                    class="mobile-menu-btn v1"
                     data-page="new"
                 >
-                        
                     <i class="fa-solid fa-circle-plus"></i>
                     <span>ارسال شبهه جدید</span>
-                </button> -->
+                </button>
+
+                <button
+                    class="mobile-menu-btn v2"
+                    data-page="new"
+                >
+                    <i class="fa-solid fa-circle-plus"></i>
+                    <span>ارسال محتوای مرتبط</span>
+                </button>
                 
                 <button
                     class="mobile-menu-btn"
                     data-page="trend"
                 >
-                        <!-- previous  -->
                     <i class="fa-solid fa-circle-question"></i>
-                    <!-- <span>سوالات روز</span> -->
-                     <span>موضوعات پرطرفدار</span>
+
+                    <span class="v1">سوالات روز</span>
+                    <span class="v2">موضوعات پرطرفدار</span>
                 </button>
 
                 <button
@@ -377,19 +379,23 @@
 
             </button>
 
-            <!-- previous  -->
-            <!-- <button class="menu-btn"
-            data-page="new">
-            <i class="fa-solid fa-circle-plus"></i>
-            ارسال شبهه جدید
-            
-            </button> -->
+            <button class="menu-btn v1"
+                    data-page="new">
+                <i class="fa-solid fa-circle-plus"></i>
+                ارسال شبهه جدید
+            </button>
+
+            <button class="menu-btn v2"
+                    data-page="new">
+                <i class="fa-solid fa-circle-plus"></i>
+                ارسال محتوای مرتبط
+            </button>
         
             <button class="menu-btn-tablet" data-page="trend">
                 <i class="fa-solid fa-circle-question"></i>
-                    <!-- previous  -->
-                <!-- سوالات روز -->
-                موضوعات پرطرفدار
+
+                <span class="v1">سوالات روز</span>
+                <span class="v2">موضوعات پرطرفدار</span>
 
             </button>
 
@@ -451,64 +457,38 @@
 
         <aside class="left-panel">
 
-            <div class="box">
-                    <!-- previous  -->
-                <!-- <h3>سوالات روز</h3> 
-                 
+            <div class="box v1">
+                <h3>سوالات روز</h3>
                 <ul>
-
                     <li>قمه زدن در عزاداری اباعبدالله</li>
-
                     <li>در کتب تاریخی اشاره ای به دختری به نام رقیه برای امام حسین علیه السلام نشده است</li>
-
                     <li>....</li>
-
                     <li>...</li>
-
                     <li>...</li>
-
                     <li>...</li>
-
                 </ul>
-                -->
-                 <h3>موضوعات پرطرفدار</h3>
+            </div>
 
+            <div class="box v2">
+                <h3>موضوعات پرطرفدار</h3>
                 <ul>
-
                     <li>قمه زنی در عزاداری اباعبدالله</li>
-
                     <li>حضرت رقیه سلام الله علیها در منابع تاریخی</li>
-
                     <li>....</li>
-
                     <li>...</li>
-
                     <li>...</li>
-
                     <li>...</li>
-
                 </ul>
-
             </div>
 
             <div class="box">
-
-                <h3>
-
-                    مناسبت های پیش رو
-
-                </h3>
+                <h3>مناسبت های پیش رو</h3>
                 <ul>
                     <li>پیاده روی اربعین</li>
-
                     <li>پیامبر اکرم، شهادت یا رحلت؟</li>
-
                     <li>علت سکوت امیرالمومنین بعد از شهادت رسول خاتم</li>
-
                     <li>...</li>
-
                 </ul>
-
             </div>
 
         </aside>
@@ -520,16 +500,15 @@
     <section class="about-site">
 
         <h2>مصباح</h2>
-            <!-- previous  -->
-        <!-- <p>
-
-            سامانه آرشیو پاسخ به شبهات بستری برای جستجوی سریع، دسترسی به پاسخ‌های
-            معتبر و ثبت سوالات جدید است.
-
-        </p> -->
-
         <p>
-            بستری برای دسترسی سریع به مطالب و معارف اسلامی، جستجو در موضوعات دینی و بهره‌مندی از منابع معتبر
+            <span class="v1">
+                بستری برای جستجوی سریع، دسترسی به پاسخ‌های
+                معتبر و ثبت سوالات جدید.
+            </span>
+
+            <span class="v2">
+                بستری برای دسترسی سریع به محتوای اسلامی، جستجو در موضوعات دینی و بهره‌مندی از منابع معتبر
+            </span>
         </p>
 
         <div class="about-grid">
@@ -539,9 +518,10 @@
                 <i class="fa-solid fa-database"></i>
 
                 <h3>000</h3>
-                    <!-- previous  -->
-                <!-- <p>شبهه آرشیوشده</p> -->
-                <p>مطلب آرشیوشده</p>
+                <p>
+                    <span class="v1">شبهه آرشیوشده</span>
+                    <span class="v2">مطلب آرشیوشده</span>
+                </p>
 
             </div>
 
@@ -570,9 +550,10 @@
                 <i class="fa-solid fa-clock"></i>
 
                 <h3>صرفه‌جویی در زمان</h3>
-                <!-- previous  -->
-                <!-- <p>دسترسی سریع به پاسخ‌ها</p> -->
-                <p>دسترسی سریع به مطالب</p>
+                <p>
+                    <span class="v1">دسترسی سریع به پاسخ‌ها</span>
+                    <span class="v2">دسترسی سریع به مطالب</span>
+                </p>
 
             </div>
 
@@ -580,9 +561,10 @@
 
                 <i class="fa-solid fa-shield"></i>
 
-                  <!-- previous  -->
-                <!-- <h3>پاسخ معتبر</h3> -->
-                <h3>محتوای معتبر</h3>
+            <h3>
+                <span class="v1">پاسخ معتبر</span>
+                <span class="v2">محتوای معتبر</span>
+            </h3>
 
                 <p>استناد به منابع علمی</p>
 
@@ -608,18 +590,27 @@
 
             </div>
 
-            <!-- previous  -->
-            <!-- <div class="about-card">
+            <div class="about-card v1">
 
                 <i class="fa-solid fa-paper-plane"></i>
+
                 <h3>ثبت شبهه</h3>
 
                 <p>ارسال سوال در صورت نبود پاسخ</p>
 
-            </div> -->
+            </div>
+
+            <div class="about-card v2">
+
+                <i class="fa-solid fa-paper-plane"></i>
+
+                <h3>ارسال محتوای مرتبط</h3>
+
+                <p>ارسال محتوای مرتبط برای افزودن به سامانه</p>
+
+            </div>
 
         </div>
-
     </section>
     
     <!-- ================= SHARED DROPDOWNS ================= -->

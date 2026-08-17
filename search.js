@@ -666,16 +666,13 @@ const SearchModule = (() => {
                             نتیجه‌ای پیدا نشد
                         </h2>
 
-<!-- previous  -->
-<!--
-                        <p>
+                        <p class="v1">
                             در صورت تمایل می توانید از بخش
                             <a href="#" onclick="event.preventDefault(); openDashboard('new')">
                                 ارسال شبهه جدید
                             </a>
                             استفاده کنید.
                         </p>
--->
 
                     </div>
                     `
@@ -685,7 +682,7 @@ const SearchModule = (() => {
 
         `;
 
-
+        applyVersion();
         bindResultEvents();
 
     }

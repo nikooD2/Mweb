@@ -114,71 +114,25 @@ const QuestionModule = (() => {
 
                 </header>
 
-<!-- previous  -->
-                <!-- QUESTION -->
-<!--
-                <section
-                    class="question-section"
-                >
-
-                    <h2  class="question-section-title"> شبهه </h2>
-
+                <section  class="question-section v1">
+                    <h2 class="question-section-title"> شبهه </h2>
                     <p class="question-section-text">
                         ${escapeHtml(
                             record.question
                         )}
                     </p>
-
                 </section>
--->
-<!-- previous  -->
-                <!-- ANSWER -->
-<!--
-                <section
-                    class="question-section"
-                >
 
-                    <h2
-                        class="question-section-title"
-                    >
-                        پاسخ
-                    </h2>
-
-
-                    <div
-                        class="answer-box"
-                    >
-
-                        <p
-                            class="question-section-text"
-                        >
-
+                <section class="question-section">
+                    <h2 class="question-section-title v1"> پاسخ </h2>
+                    <div class="answer-box">
+                        <p class="question-section-text">
                             ${escapeHtml(
                                 record.answer
                             )}
-
                         </p>
-
                     </div>
-
                 </section>
--->
-<!--new -->
-                <div
-                        class="answer-box"
-                    >
-
-                        <p
-                            class="question-section-text"
-                        >
-
-                            ${escapeHtml(
-                                record.answer
-                            )}
-
-                        </p>
-
-                    </div>
 
                 <!-- ATTACHMENTS -->
 
@@ -219,16 +173,13 @@ const QuestionModule = (() => {
                         :
 
                         `
-<!-- previous  -->
-<!--                        <p  class="question-section-text">
-                            برای این پرسش پیوستی
-                            ثبت نشده است.
-                            </p>
--->
-                            <p  class="question-section-text">
-                            برای این مطلب پیوستی
-                            ثبت نشده است.
-                            </p>
+                        <p class="question-section-text v1">
+                            برای این پرسش پیوستی ثبت نشده است.
+                        </p>
+
+                        <p class="question-section-text v2">
+                            برای این مطلب پیوستی ثبت نشده است.
+                        </p>
                         `
                     }
 
@@ -316,70 +267,41 @@ const QuestionModule = (() => {
                             class="fa-solid
                                   fa-arrow-right"
                         ></i>
-<!-- previous  -->
-<!--                        <span>
-                            پرسش قبلی
-                        </span>
--->
-                        <span>
-                            قبلی
-                        </span>     
+                        <span class="v1">پرسش قبلی</span>
+                        <span class="v2">قبلی</span>    
                     </button>
 
-
-                    <span
-                        class="question-position"
-                    >
-
+                    <span class="question-position">
                         ${index + 1}
-
                         از
-
                         ${SearchModule.getResultCount()}
-
                     </span>
 
 
-                    <button
-                        class="question-nav-btn"
-
+                    <button class="question-nav-btn"
                         ${
                             next
                             ? ""
                             : "disabled"
                         }
-
                         data-question-nav="${
                             next
                             ? next.id
                             : ""
                         }"
                     >
-<!-- previous  -->
-<!--                        <span>
-                            پرسش بعدی
-                        </span>
--->
-                        <span>
-                            بعدی
-                        </span> 
 
+                    <span class="v1">پرسش بعدی</span>
+                    <span class="v2">بعدی</span>
                         <i
                             class="fa-solid
                                   fa-arrow-left"
                         ></i>
-
                     </button>
-
-
                 </nav>
-
-
             </div>
-
         `;
-
-
+        applyVersion();
         bindEvents();
 
 

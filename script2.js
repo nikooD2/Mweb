@@ -1,4 +1,16 @@
-﻿/*=====================================
+﻿
+const VERSION = 2;
+
+function applyVersion() {
+    document.querySelectorAll(".v1, .v2").forEach(el => {
+        el.style.display =
+            el.classList.contains(`v${VERSION}`) ? "" : "none";
+    });
+}
+
+applyVersion();
+
+/*=====================================
     PASSWORD PROTECTION
 =====================================*/
 
@@ -245,69 +257,55 @@ async function loadPage(page) {
 
 <div class="cards">
 
-<div class="card" onclick="openDashboard('search')">
+    <div class="card" onclick="openDashboard('search')">
 
-<h3>
+    <h3>جستجو</h3>
 
-جستجو
+    <p class="v1">
+        موضوع، کلیدواژه یا عبارت مربوط به شبهه را وارد و تنها با یک کلیک بهترین پاسخ برای آن را پیدا کنید.
+    </p>
 
-</h3>
+    <p class="v2">
+        موضوع، کلیدواژه یا عبارت مربوطه را وارد و تنها با یک کلیک بهترین نتیجه برای آن را پیدا کنید.
+    </p>
+    </div>
 
-    <!-- previous  -->
-<!-- <p>
-موضوع، کلیدواژه یا عبارت مربوط به شبهه را وارد و تنها با یک کلیک بهترین پاسخ برای آن را پیدا کنید.
-</p> -->
+    <div class="card" onclick="openDashboard('advanced')">
 
-<p>
-موضوع، کلیدواژه یا عبارت مربوطه را وارد و تنها با یک کلیک بهترین پاسخ برای آن را پیدا کنید.
-</p>
-
-</div>
-
-<div class="card" onclick="openDashboard('advanced')">
-
-<h3>
-
-جستجوی پیشرفته
-
-</h3>
-
-<p>
-برای پیدا کردن دقیق‌تر مطالب، جستجو را با فیلترهای پیشرفته محدود کنید.
-</p>
-
-</div>
-
-<div class="card" onclick="openDashboard('ai')">
-
-<h3>
-هوش مصنوعی
-</h3>
-
-    <!-- previous  -->
-<!-- <p>
-هوش مصنوعی مصباح با دریافت متن شبهه، استخراج کلید واژه ها و جستجو در آرشیو را برای شما انجام می دهد
-</p>-->
-
- <p>
-هوش مصنوعی مصباح با دریافت متن متن، کلید واژه ها را استخراج و جستجو در آرشیو را برای شما انجام می دهد
-</p>
-
-    <!-- previous  -->
-<!-- </div>
-    <div class="card" onclick="openDashboard('new')">
-
-        <h3>
-        ارسال شبهه جدید
-        </h3>
-
-        <p>
-        در صورت پیدا نکردن جواب پرسش خود یا تمایل به ارسال شبهه جدید برای ما، از این قسمت با ما در ارتباط باشید
-        </p>
+    <h3>جستجوی پیشرفته</h3>
+    <p>
+    برای پیدا کردن دقیق‌تر مطالب، جستجو را با فیلترهای پیشرفته محدود کنید.
+    </p>
 
     </div>
 
-</div> -->
+    <div class="card" onclick="openDashboard('ai')">
+
+        <h3>هوش مصنوعی</h3>
+
+        <p class="v1">
+            هوش مصنوعی مصباح با دریافت متن شبهه، کلید واژه ها را استخراج کرده و جستجو در آرشیو را برای شما انجام می دهد
+        </p>
+        <p class="v2">
+            هوش مصنوعی مصباح با دریافت متن، کلید واژه ها را استخراج کرده و جستجو در آرشیو را برای شما انجام می دهد
+        </p>
+    </div>
+
+    <div class="card v1" onclick="openDashboard('new')">
+        <h3>ارسال شبهه جدید</h3>
+        <p>
+            در صورت پیدا نکردن جواب پرسش خود یا تمایل به ارسال شبهه جدید برای ما، از این قسمت با ما در ارتباط باشید
+        </p>
+    </div>
+
+    <div class="card v2" onclick="openDashboard('new')">
+        <h3>ارسال محتوای مرتبط</h3>
+        <p>
+            در صورت یافتن محتوای مرتبط با موضوعات سامانه، می‌توانید آن را از این قسمت برای ما ارسال کنید.
+        </p>
+    </div>
+
+</div>
 `;
 
             break;
@@ -321,32 +319,25 @@ async function loadPage(page) {
 
             <div class="mobile-home">
 
-                    <!-- previous  -->
-                <!-- <h1>
+                <h1 class="v1">
                     پاسخ به شبهات مذهبی
                 </h1>
-                <p>
+                <h1 class="v2">
+                    بانک محتوای مذهبی
+                </h1>
+
+                <p class="v1">
                     جستجو در میان هزاران سوال، پاسخ و منبع معتبر
                 </p>
-                -->
-
-                <h1>
-                    مطالب و معارف اسلامی
-                </h1>
-                <p>
+                <p class="v2">
                     جستجو در میان هزاران مطلب، محتوا و منبع معتبر
                 </p>
 
                 <div class="hero-search">
-                        <!-- previous  -->
-                    <!-- <input
-                        type="text"
-                        placeholder="سوال یا موضوع مورد نظر را وارد کنید..."
-                    > -->
 
                     <input
                         type="text"
-                        placeholder="موضوع مورد نظر را وارد کنید..."
+                        placeholder="در آرشیو جستجو کنید..."
                     >
                     <button>
                         جستجو
@@ -363,10 +354,14 @@ async function loadPage(page) {
                     <a href="#" onclick="openDashboard('ai')">
                         هوش مصنوعی
                     </a>
-                        <!-- previous  -->
-                    <!-- <a href="#" onclick="openDashboard('new')">
+
+                    <a href="#" onclick="openDashboard('new')" class="v1">
                         ارسال شبهه جدید
-                    </a> -->
+                    </a>
+
+                    <a href="#" onclick="openDashboard('new')" class="v2">
+                        ارسال محتوای مرتبط
+                    </a>
 
                 </div>
 
@@ -563,25 +558,28 @@ async function loadPage(page) {
             // break;
         /*=============================*/
 
-            // ================= previous ================
-        // case "new":
+        case "new":
 
             content.innerHTML = `
 
 <div class="new-question-page">
 
-    <h2 class="page-title">
-
+    <h2 class="page-title v1">
         ارسال شبهه جدید
+    </h2>
 
+    <h2 class="page-title v2">
+        ارسال محتوای مرتبط
     </h2>
 
     <div class="form-group">
 
-        <label>
-
+        <label class="v1">
             نوع شبهه را وارد کنید
+        </label>
 
+        <label class="v2">
+            نوع محتوا را وارد کنید
         </label>
 
         <select class="form-control">
@@ -617,15 +615,22 @@ async function loadPage(page) {
 
     <div class="form-group">
 
-        <label>
-
+        <label class="v1">
             شبهه مورد نظر را توضیح دهید
+        </label>
 
+        <label class="v2">
+            محتوای مرتبط را توضیح دهید
         </label>
 
         <textarea
-            class="form-control textarea-lg"
+            class="form-control textarea-lg v1"
             placeholder="لطفا برای دریافت پاسخ بهتر، شبهه را دقیق و با جزئیات توضیح دهید، در صورت امکان منبعی که از آن شبهه را دریافت کرده‌اید، مخاطبی که قرار است پاسخ مناسب برای او تولید شود و همچنین رده سنی مخاطب را ذکر کنید."
+        ></textarea>
+
+        <textarea
+            class="form-control textarea-lg v2"
+            placeholder="لطفا برای ارسال محتوای مرتبط، توضیحات لازم درباره محتوا و ارتباط آن با موضوعات سامانه را وارد کنید."
         ></textarea>
 
     </div>
@@ -634,7 +639,7 @@ async function loadPage(page) {
 
     <label>
 
-        در صورت وجود عکس، ویدیو و یا صوت مشاهده شده در فضای مجازی را ارسال کنید
+        در صورت وجود، عکس، ویدیو و یا صوت مشاهده شده در فضای مجازی را ارسال کنید
 
     </label>
 
@@ -690,18 +695,23 @@ async function loadPage(page) {
 
         <i class="fa-solid fa-circle-check"></i>
 
-        <h3>
-
+        <h3 class="v1">
             پیام شما با موفقیت ارسال شد
-
         </h3>
 
-        <p>
-
+        <p class="v1">
             با تشکر از شما، شبهه ثبت شد.
             پس از بررسی و تولید پاسخ مناسب،
             از طریق بخش اعلان‌ها شما را مطلع خواهیم کرد.
+        </p>
 
+        <h3 class="v2">
+            پیام شما با موفقیت ارسال شد
+        </h3>
+
+        <p class="v2">
+            با تشکر از شما، محتوای ارسالی ثبت شد.
+            پس از بررسی، نتیجه از طریق بخش اعلان‌ها به شما اطلاع داده خواهد شد.
         </p>
 
         <button id="closeSuccess">
@@ -869,11 +879,13 @@ async function loadPage(page) {
         case "trend":
 
             content.innerHTML = `
-                <!-- previous  -->
-            <!-- <h2>
-            سوالات روز
-            </h2> -->
-            <h2>مضوعات پرطرفدار</h2>
+            <h2 class="v1">
+                سوالات روز
+            </h2>
+
+            <h2 class="v2">
+                موضوعات پرطرفدار
+            </h2>
 
             <div class="cards">
             <div class="card">
@@ -977,8 +989,8 @@ async function loadPage(page) {
 
         break;
     }
+    applyVersion();
     scrollToDashboard();
-
 }
 
 
