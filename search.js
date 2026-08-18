@@ -176,6 +176,8 @@ const SearchModule = (() => {
                 input?.value || ""
             );
 
+            scrollToDashboard();
+
         }
 
 
@@ -570,7 +572,7 @@ const SearchModule = (() => {
 
 
         renderResults();
-
+        scrollToDashboard();
     }
 
     /* =====================================================

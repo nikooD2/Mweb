@@ -1,5 +1,6 @@
-﻿
-const VERSION = 2;
+﻿const d = 1;
+const i = 2;
+const VERSION = i;
 
 function applyVersion() {
     document.querySelectorAll(".v1, .v2").forEach(el => {
@@ -137,7 +138,7 @@ const mobileMenuButtons =
 const tabletMenuButtons =
     document.querySelectorAll(".menu-btn-tablet");
 
-function activateMenuButton(button) {
+function activateMenuButton(button , shouldScroll = true) {
 
     if (!button) return;
 
@@ -168,7 +169,7 @@ function activateMenuButton(button) {
         );
     });
 
-    loadPage(page);
+    loadPage(page , shouldScroll);
 }
 
 
@@ -235,7 +236,7 @@ function openDashboard(page) {
     LOAD PAGE
 =====================================*/
 
-async function loadPage(page) {
+async function loadPage(page , shouldScroll = true) {
 
     switch (page) {
 
@@ -989,39 +990,59 @@ async function loadPage(page) {
 
         break;
     }
+
     applyVersion();
-    scrollToDashboard();
+    if(shouldScroll){
+        scrollToDashboard();
+    }
 }
 
 
 /*=====================================
     INITIAL PAGE
 =====================================*/
+function updateHomeByScreenSize() {
 
-window.addEventListener("DOMContentLoaded", () => {
-
-    /*
-        دسکتاپ → home
-        موبایل → mobile-home
-    */
-    initHeroSearch();
     const isMobile = window.innerWidth <= 600;
 
-    const initialPage = isMobile
-        ? "mobile-home"
-        : "home";
-
-
-    const initialButton = document.querySelector(
+    const currentPage =
         isMobile
-            ? `.mobile-menu-btn[data-page="${initialPage}"]`
-            : `.menu-btn[data-page="${initialPage}"]`
+            ? "mobile-home"
+            : "home";
+
+    const button = document.querySelector(
+        isMobile
+            ? `.mobile-menu-btn[data-page="${currentPage}"]`
+            : `.menu-btn[data-page="${currentPage}"]`
     );
 
-
-    if (initialButton) {
-        activateMenuButton(initialButton);
+    if (button) {
+        activateMenuButton(button , false);
     }
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+    initHeroSearch();
+    updateHomeByScreenSize();
+
+    let previousIsMobile =
+        window.innerWidth <= 600;
+
+    window.addEventListener("resize", () => {
+
+        const currentIsMobile =
+            window.innerWidth <= 600;
+
+        // فقط وقتی از مرز 600 عبور کردیم
+        if (currentIsMobile !== previousIsMobile) {
+
+            previousIsMobile = currentIsMobile;
+
+            updateHomeByScreenSize();
+        }
+
+    });
+
 
     /* Password */
 
