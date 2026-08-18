@@ -70,7 +70,7 @@ window.addEventListener("scroll", () => {
     if (navbar) {
         navbar.classList.toggle(
             "active",
-            window.scrollY > 120
+            window.scrollY > 50
         );
     }
 
